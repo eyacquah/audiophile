@@ -1,0 +1,86 @@
+extends base
+
+block content
+    .container.mb-5.pb-3
+        .bg-light.shadow-lg.rounded-3.overflow-hidden
+            .row
+                include _sidebar
+                // Content
+                section.col-lg-8.pt-lg-4.pb-4.mb-3
+                    .pt-2.px-4.ps-lg-0.pe-xl-5
+                        // Title
+                        .d-sm-flex.flex-wrap.justify-content-between.align-items-center.pb-2
+                            h2.h3.py-2.me-2.text-center.text-sm-start Update Product
+                            //- .py-2
+                            //-     select#unp-category.form-select.me-2
+                            //-         option Select category
+                            //-         option Photos
+                                    
+                        form.productForm(data-id=product.id)
+                            .mb-3.pb-2
+                                label.form-label(for='title') Product Name
+                                input#title.form-control(type='text' value=product.title)
+                                .form-text Maximum 100 characters. No HTML or emoji allowed.
+                            .mb-3
+                                label(for="category").form-label
+                                    | Choose Category
+                                select(id="category").form-select
+                                    each category in categories
+                                        - if(`${category.id}` === `${product.category}`)
+                                            option.category(data-id=category.id selected)= category.title
+                                        - if(`${category.id}` !== `${product.category}`)
+                                            option.category(data-id=category.id)= category.title
+                            .file-drop-area.mb-3
+                                .file-drop-icon.ci-cloud-upload
+                                span.file-drop-message Drag and drop here to upload product image
+                                input.file-drop-input(type='file' multiple id="images")
+                                button.file-drop-btn.btn.btn-primary.btn-sm.mb-2(type='button') Or select file
+                                .form-text Ignore this if you are not changing the images
+                            .mb-3.py-2
+                                label.form-label(for='description') Product description
+                                textarea#description.form-control(rows='6')= product.description
+                                .bg-secondary.p-3.fs-ms.rounded-bottom
+                                    span.d-inline-block.fw-medium.me-2.my-1 Markdown supported:
+                                    em.d-inline-block.border-end.pe-2.me-2.my-1 *Italic*
+                                    strong.d-inline-block.border-end.pe-2.me-2.my-1 **Bold**
+                                    span.d-inline-block.border-end.pe-2.me-2.my-1 - List item
+                                    span.d-inline-block.border-end.pe-2.me-2.my-1 ##Heading##
+                                    span.d-inline-block --- Horizontal rule
+                            .row
+                                .col-sm-6.mb-3
+                                    label.form-label(for='price') Actual Price
+                                    .input-group
+                                        span.input-group-text
+                                            i.ci-dollar
+                                        input#price.form-control(type='text' value=product.price)
+                                    .form-text All prices are in Ghana Cedis (GHS)
+                                .col-sm-6.mb-3
+                                    label.form-label(for='priceDiscount') Discounted Price
+                                    .input-group
+                                        span.input-group-text
+                                            i.ci-dollar
+                                        input#priceDiscount.form-control(type='text' value=product.priceDiscount)
+                                    .form-text Ignore this if you are not running a promo now
+                            .mb-3
+                                label(for="visibility").form-label
+                                    | Visibility
+                                select(id="visibility").form-select
+                                    - if(product.isVisible)
+                                        option(data-bool='yes' selected) Yes. Show on website
+                                        option(data-bool='no') No. Hide this product
+                                    -if(!product.isVisible)
+                                        option(data-bool='yes') Yes. Show on website
+                                        option(data-bool='no' selected) No. Hide this product
+                            //- .mb-3.py-2
+                            //-     label.form-label(for='tags') Product tags
+                            //-     textarea#tags.form-control(rows='4')
+                            //-     .form-text
+                            //-         | Up to 10 keywords that describe your item. Tags should all be in lowercase and separated by commas.
+                            //- .mb-3.pb-2
+                            //-     label.form-label(for='unp-product-files') Product files for sale
+                            //-     input#unp-product-files.form-control(type='file' multiple)
+                            //-     .form-text Maximum file size is 1GB
+                            button.btn.btn-primary.d-block.w-100.productBtn(type='submit')
+                                i.ci-cloud-upload.fs-lg.me-2
+                                | Upload Product
+

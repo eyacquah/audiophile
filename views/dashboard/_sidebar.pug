@@ -1,0 +1,48 @@
+// Sidebar
+aside.col-lg-4.pe-xl-5
+  // Account menu toggler (hidden on screens larger 992px)
+  .d-block.d-lg-none.p-4
+    a.btn.btn-outline-accent.d-block(href='#account-menu' data-bs-toggle='collapse')
+      i.ci-menu.me-2
+      | Account menu
+  // Actual menu
+  .h-100.border-end.mb-2
+    #account-menu.d-lg-block.collapse
+      .bg-secondary.p-4
+        h3.fs-sm.mb-0.text-muted Account
+      ul.list-unstyled.mb-0
+        li.border-bottom.mb-0
+          a.nav-link-style.d-flex.align-items-center.px-4.py-3(href='#')
+            i.ci-settings.opacity-60.me-2
+            | Settings
+        li.border-bottom.mb-0
+          a.nav-link-style.d-flex.align-items-center.px-4.py-3(href=`/`)
+            i.ci-eye.opacity-60.me-2
+            | View Store
+      .bg-secondary.p-4
+        h3.fs-sm.mb-0.text-muted Seller Dashboard
+      ul.list-unstyled.mb-0
+        li.border-bottom.mb-0
+          a.nav-link-style.d-flex.align-items-center.px-4.py-3.active(href=`/dashboard`)
+            i.ci-dollar.opacity-60.me-2
+            | Sales
+            span.fs-sm.text-muted.ms-auto= 0
+        li.border-bottom.mb-0
+          a.nav-link-style.d-flex.align-items-center.px-4.py-3(href=`/dashboard/categories`)
+            i.ci-book.opacity-60.me-2
+            | Categories
+            span.fs-sm.text-muted.ms-auto= 0
+        li.border-bottom.mb-0
+          a.nav-link-style.d-flex.align-items-center.px-4.py-3(href=`/dashboard/products/all`)
+            i.ci-package.opacity-60.me-2
+            | Products
+            span.fs-sm.text-muted.ms-auto= 0
+        li.border-bottom.mb-0
+          a.nav-link-style.d-flex.align-items-center.px-4.py-3(href=`/dashboard/products/add`)
+            i.ci-cloud-upload.opacity-60.me-2
+            | Add New Product
+        li.mb-0
+          a.nav-link-style.d-flex.align-items-center.px-4.py-3(href=`/auth/logout`)
+            i.ci-sign-out.opacity-60.me-2
+            | Sign out
+      hr

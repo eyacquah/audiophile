@@ -1,0 +1,37 @@
+extends base
+
+block content
+    .container.mb-5.pb-3
+        .bg-light.shadow-lg.rounded-3.overflow-hidden
+            .row
+                include _sidebar
+                // Content
+                section.col-lg-8.pt-lg-4.pb-4.mb-3
+                    // Launch default modal
+                    button(type="button" data-bs-toggle="modal", data-bs-target="#modalDefault").btn.btn-primary.btn-shadow
+                        | Add Category
+                    include _createCategory
+                    // Basic table
+                    .table-responsive
+                        table.table
+                            thead
+                                tr
+                                    th Title
+                                    th Num of Products
+                                    th Edit
+                                    th Delete
+                            tbody
+                                each category in categories
+                                    tr
+                                        td= category.title
+                                        td 4
+                                        td
+                                            button.editCategory(type="button" data-category=category data-bs-toggle="modal", data-bs-target="#modalDefault2").btn.btn-secondary.btn-icon
+                                                i.ci-edit
+                                        td
+                                            button.deleteCategory(type="button" data-category=category data-bs-toggle="modal", data-bs-target="#delete").btn.btn-danger.btn-icon
+                                                i.ci-trash
+                                                
+                include _deleteCategory
+                include _editCategory
+                

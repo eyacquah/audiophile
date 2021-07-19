@@ -1,0 +1,22 @@
+.modal(tabindex='-1' role='dialog' style='padding-right: 16px' aria-modal='true' id="modalDefault2")
+    .modal-dialog.modal-dialog-centered(role='document')
+        .modal-content
+            .modal-header
+                ul.nav.nav-tabs.card-header-tabs(role='tablist')
+                    li.nav-item
+                        a.nav-link.active(data-bs-toggle='tab' role='tab' aria-selected='true')
+                            i.ci-add-document.me-2.mt-n1
+                            |   Edit Category
+                button.closeModal.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body.tab-content.py-4
+                form.editCategoryForm
+                    // Floating label: Text input
+                    .form-floating.mb-3
+                        input(type="text", id="title", placeholder="Headphones").form-control
+                        label(for="title") Category Title
+
+                    // Floating label: Textarea
+                    .form-floating.mb-3
+                        textarea(id="description", style="height: 120px;", placeholder="Your message").form-control
+                        label(for="description") Description
+                    button.btn.btn-primary(type="submit") Submit

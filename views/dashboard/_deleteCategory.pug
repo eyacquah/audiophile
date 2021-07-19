@@ -1,0 +1,16 @@
+.modal(tabindex='-1' role='dialog' style='padding-right: 16px' aria-modal='true' id="delete")
+    .modal-dialog.modal-dialog-centered(role='document')
+        .modal-content
+            .modal-header
+                ul.nav.nav-tabs.card-header-tabs(role='tablist')
+                    li.nav-item
+                        a.nav-link.active(data-bs-toggle='tab' role='tab' aria-selected='true')
+                            i.ci-add-document.me-2.mt-n1
+                            |   Delete Category
+                button.closeModal.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body.tab-content.py-4
+                h5.deleteText
+                br
+                button(type="button").deleteBtnConfirm.btn-outline-danger.d-block.w-100 Delete
+               
+                //- button(type="button").cancelDeleteBtn.btn-outline-accent.d-block.w-100 Cancel
