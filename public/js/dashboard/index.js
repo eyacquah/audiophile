@@ -2,14 +2,14 @@
 console.log("Connected!");
 
 // import { createOrUpdateProduct, deleteProduct } from "./products";
-// import { createCategory, deleteCategory } from "./category";
+// import { createBrand, deleteBrand } from "./brand";
 // import { login, logout } from "./login";
 // import { updateOrder, deleteOrder } from "./order";
 // import { updateSlider } from "./slider";
 
 const productForms = document.querySelectorAll(".productForm");
 const confirmDeleteProductBtns = document.querySelectorAll(".confirmDelete");
-const deleteCategoryBtn = document.querySelector(".deleteCategory");
+const deleteBrandBtn = document.querySelector(".deleteBrand");
 const loginForm = document.querySelector(".loginForm");
 const logoutBtn = document.querySelector(".logout");
 const orderForm = document.querySelector(".orderForm");
@@ -30,14 +30,14 @@ const sliderForm = document.querySelector(".sliderForm");
 //   await deleteProduct(e.target.dataset.id);
 // }
 
-async function handleCategoryForm(e) {
+async function handleBrandForm(e) {
   e.preventDefault();
-  await createCategory(this);
+  await createBrand(this);
 }
 
-// async function handleDeleteCategory(e) {
+// async function handleDeleteBrand(e) {
 //   e.preventDefault();
-//   await deleteCategory(e.target.dataset.id);
+//   await deleteBrand(e.target.dataset.id);
 // }
 
 // async function handleLoginForm(e) {
@@ -88,9 +88,8 @@ async function handleCategoryForm(e) {
 //   );
 // }
 
-if (categoryForm) categoryForm.addEventListener("submit", handleCategoryForm);
-if (deleteCategoryBtn)
-  deleteCategoryBtn.addEventListener("click", handleDeleteCategory);
+if (brandForm) brandForm.addEventListener("submit", handleBrandForm);
+if (deleteBrandBtn) deleteBrandBtn.addEventListener("click", handleDeleteBrand);
 
 // if (loginForm) loginForm.addEventListener("submit", handleLoginForm);
 

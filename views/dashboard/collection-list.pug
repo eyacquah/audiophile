@@ -9,29 +9,27 @@ block content
                 section.col-lg-8.pt-lg-4.pb-4.mb-3
                     // Launch default modal
                     button(type="button" data-bs-toggle="modal", data-bs-target="#modalDefault").btn.btn-primary.btn-shadow
-                        | Add Category
-                    include _createCategory
+                        | Add Collection
+                    include _createCollection
                     // Basic table
                     .table-responsive
                         table.table
                             thead
                                 tr
                                     th Title
-                                    th Num of Products
                                     th Edit
                                     th Delete
                             tbody
-                                each category in categories
+                                each collection in collections
                                     tr
-                                        td= category.title
-                                        td 4
+                                        td= collection.title
                                         td
-                                            button.editCategory(type="button" data-category=category data-bs-toggle="modal", data-bs-target="#modalDefault2").btn.btn-secondary.btn-icon
+                                            button.editCollection(type="button" data-collection=collection data-bs-toggle="modal", data-bs-target="#modalDefault2").btn.btn-secondary.btn-icon
                                                 i.ci-edit
                                         td
-                                            button.deleteCategory(type="button" data-category=category data-bs-toggle="modal", data-bs-target="#delete").btn.btn-danger.btn-icon
+                                            button.deleteCollection(type="button" data-collection=collection data-bs-toggle="modal", data-bs-target="#delete").btn.btn-danger.btn-icon
                                                 i.ci-trash
                                                 
-                include _deleteCategory
-                include _editCategory
+                include _deleteCollection
+                include _editCollection
                 

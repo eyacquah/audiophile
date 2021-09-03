@@ -1,0 +1,274 @@
+extends base
+
+block content
+
+  include _quickview
+  include _nav
+
+  // Page Title
+  .page-title-overlap.bg-primary.pt-4
+    .container.d-lg-flex.justify-content-between.py-2.py-lg-3
+      .order-lg-2.mb-3.mb-lg-0.pt-lg-2
+        nav(aria-label='breadcrumb')
+          ol.breadcrumb.breadcrumb-light.flex-lg-nowrap.justify-content-center.justify-content-lg-start
+            li.breadcrumb-item
+              a.text-nowrap(href='/')
+                i.ci-home
+                | Audiophile
+            li.breadcrumb-item.text-nowrap
+              a(href='#') Shop
+            li.breadcrumb-item.text-nowrap.active(aria-current='page') Checkout
+      .order-lg-1.pe-lg-4.text-center.text-lg-start
+        h1.h3.text-black.mb-0 Checkout
+  .container.pb-5.mb-2.mb-md-4
+    .row
+      section.col-lg-8
+        // Steps
+        .steps.steps-light.pt-2.pb-3.mb-5
+          a.step-item.active(href='/cart')
+            .step-progress
+              span.step-count 1
+            .step-label
+              i.ci-cart
+              | Cart
+          a.step-item.active.current(href='/checkout')
+            .step-progress
+              span.step-count 2
+            .step-label
+              i.ci-user-circle
+              | Details
+          a.step-item(href='#')
+            .step-progress
+              span.step-count 3
+            .step-label
+              i.ci-package
+              | Shipping
+          a.step-item(href='#')
+            .step-progress
+              span.step-count 4
+            .step-label
+              i.ci-card
+              | Payment
+          a.step-item(href='#')
+            .step-progress
+              span.step-count 5
+            .step-label
+              i.ci-check-circle
+              | Review
+        //- // Autor info
+        //- .d-sm-flex.justify-content-between.align-items-center.bg-secondary.p-4.rounded-3.mb-grid-gutter
+        //-   .d-flex.align-items-center
+        //-     .img-thumbnail.rounded-circle.position-relative.flex-shrink-0
+        //-       span.badge.bg-warning.position-absolute.end-0.mt-n2(data-bs-toggle='tooltip' title='Reward points') 384
+        //-       img.rounded-circle(src='/assets/theme/img/shop/account/avatar.jpg' width='90' alt='Susan Gardner')
+        //-     .ps-3
+        //-       h3.fs-base.mb-0 Susan Gardner
+        //-       span.text-accent.fs-sm s.gardner@example.com
+        //-   a.btn.btn-light.btn-sm.btn-shadow.mt-3.mt-sm-0(href='account-profile.html')
+        //-     i.ci-edit.me-2
+        //-     | Edit profile
+        // Shipping address
+        .insertAlert
+        h2.checkoutPage.h6.pt-1.pb-3.mb-3.border-bottom Shipping address
+        form.shippingAddress
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='firstName') First Name
+                input#firstName.form-control(type='text')
+            .col-sm-6
+              .mb-3
+                label.form-label(for='lastName') Last Name
+                input#lastName.form-control(type='text')
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='email') E-mail Address
+                input#email.form-control(type='email')
+            .col-sm-6
+              .mb-3
+                label.form-label(for='phone') Phone Number
+                input#phone.form-control(type='text')
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='company') Company
+                input#company.form-control(type='text')
+            .col-sm-6
+              .mb-3
+                label.form-label(for='country') Country
+                select#country.form-select
+                  option Ghana
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='region') Region
+                select#region.form-select
+                  option Choose Region
+                  option Greater-Accra
+                  option Ashanti
+                  option Central
+                  option Eastern
+                  option Western Ghana
+                  option Volta & Oti
+                  option Northern Ghana
+                  option Bono, Bono East & Ahafo
+            .col-sm-6
+              .mb-3
+                label.form-label(for='zip') ZIP Code
+                input#zip.form-control(type='text' value="00233")
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='address1') Address 1
+                input#address1.form-control(type='text')
+            .col-sm-6
+              .mb-3
+                label.form-label(for='address2') Address 2
+                input#address2.form-control(type='text')
+        h6.mb-3.py-3.border-bottom Billing address
+        .form-check
+          input#sameAddress.form-check-input(type='checkbox' checked='')
+          label.form-check-label(for='sameAddress') Same as shipping address
+        form.billingAddress
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='firstName') First Name
+                input#firstName.form-control(type='text')
+            .col-sm-6
+              .mb-3
+                label.form-label(for='lastName') Last Name
+                input#lastName.form-control(type='text')
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='email') E-mail Address
+                input#email.form-control(type='email')
+            .col-sm-6
+              .mb-3
+                label.form-label(for='phone') Phone Number
+                input#phone.form-control(type='text')
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='company') Company
+                input#company.form-control(type='text')
+            .col-sm-6
+              .mb-3
+                label.form-label(for='country') Country
+                select#country.form-select
+                  option Ghana
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='region') Region
+                select#region.form-select
+                  option Choose Region
+                  option Greater-Accra
+                  option Ashanti
+                  option Central
+                  option Eastern
+                  option Western Ghana
+                  option Volta & Oti
+                  option Northern Ghana
+                  option Bono, Bono East & Ahafo
+            .col-sm-6
+              .mb-3
+                label.form-label(for='zip') ZIP Code
+                input#zip.form-control(type='text' value="00233")
+          .row
+            .col-sm-6
+              .mb-3
+                label.form-label(for='address1') Address 1
+                input#address1.form-control(type='text')
+            .col-sm-6
+              .mb-3
+                label.form-label(for='address2') Address 2
+                input#address2.form-control(type='text')
+        
+        // Navigation (desktop)
+        .d-none.d-lg-flex.pt-4.mt-3
+          .w-50.pe-3
+            a.btn.btn-secondary.d-block.w-100(href='/cart')
+              i.ci-arrow-left.mt-sm-0.me-1
+              span.d-none.d-sm-inline Back to Cart
+              span.d-inline.d-sm-none Back
+          .w-50.ps-2
+            a.proceedToShipping.btn.btn-black.d-block.w-100(href='#')
+              span.d-none.d-sm-inline Proceed to Shipping
+              span.d-inline.d-sm-none Next
+              i.ci-arrow-right.mt-sm-0.ms-1
+      // Sidebar
+      aside.col-lg-4.pt-4.pt-lg-0.ps-xl-5
+        .bg-white.rounded-3.shadow-lg.p-4.ms-lg-auto
+          .py-2.px-xl-2
+            .widget.mb-3
+              h2.widget-title.text-center Order summary
+                // PRODUCT
+                .productContainer
+                  //- .d-flex.align-items-center.pb-2.border-bottom
+                  //-   a.d-block.flex-shrink-0(href='shop-single-v1.html')
+                  //-     img(src='/assets/theme/img/shop/cart/widget/01.jpg' width='64' alt='Product')
+                  //-   .ps-2
+                  //-     h6.widget-product-title
+                  //-       a(href='shop-single-v1.html') Women Colorblock Sneakers
+                  //-     .widget-product-meta
+                  //-       span.text-accent.me-2
+                  //-         | $150.
+                  //-         small 00
+                  //-       span.text-muted x 1
+                  //- // PRODUCT    
+                  //- .d-flex.align-items-center.py-2.border-bottom
+                  //-   a.d-block.flex-shrink-0(href='shop-single-v1.html')
+                  //-     img(src='/assets/theme/img/shop/cart/widget/02.jpg' width='64' alt='Product')
+                  //-   .ps-2
+                  //-     h6.widget-product-title
+                  //-       a(href='shop-single-v1.html') TH Jeans City Backpack
+                  //-     .widget-product-meta
+                  //-       span.text-accent.me-2
+                  //-         | $79.
+                  //-         small 50
+                  //-       span.text-muted x 1
+
+            ul.list-unstyled.fs-sm.pb-2.border-bottom
+              li.d-flex.justify-content-between.align-items-center
+                span.me-2 Subtotal:
+                span.orderSubtotal.text-end
+                  | GHS 0.
+                  small 00
+              li.d-flex.justify-content-between.align-items-center
+                span.me-2 Shipping:
+                span.shippingFee.text-end &mdash;
+              //- li.d-flex.justify-content-between.align-items-center
+              //-   span.me-2 Taxes:
+              //-   span.text-end
+              //-     | $9.
+              //-     small 50
+              //- li.d-flex.justify-content-between.align-items-center
+              //-   span.me-2 Discount:
+              //-   span.text-end &mdash;
+            h3.orderTotal.fw-normal.text-center.my-4
+              | GHS 0.
+              small 00
+            //- form.needs-validation(novalidate='')
+            //-   .mb-3
+            //-     input.form-control(type='text' placeholder='Promo code' required='')
+            //-     .invalid-feedback Please provide promo code.
+            //-   button.btn.btn-outline-primary.d-block.w-100(type='submit') Apply promo code
+    // Navigation (mobile)
+    .row.d-lg-none
+      .col-lg-8
+        .d-flex.pt-4.mt-3
+          .w-50.pe-3
+            a.btn.btn-secondary.d-block.w-100(href='/cart')
+              i.ci-arrow-left.mt-sm-0.me-1
+              span.d-none.d-sm-inline Back to Cart
+              span.d-inline.d-sm-none Back
+          .w-50.ps-2
+            a.proceedToShipping.btn.btn-black.d-block.w-100(href='#')
+              span.d-none.d-sm-inline Proceed to Shipping
+              span.d-inline.d-sm-none Next
+              i.ci-arrow-right.mt-sm-0.ms-1
+
+//- .btn.btn-black.d-block.w-100.mt-4

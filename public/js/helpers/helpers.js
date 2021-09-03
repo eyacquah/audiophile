@@ -22,12 +22,15 @@ const spinner = {
 export const renderSpinner = (btnClass, type, text) => {
   const spinnerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
   ${text}`;
-  const btn = document.querySelector(`.${btnClass}`);
-  //   const originalBtn = btn.innerHTML;
-  if (spinner.hasNotSpan) {
-    spinner.originalHTML = btn.innerHTML;
-    spinner.hasNotSpan = false;
-  }
+  const allBtns = document.querySelectorAll(`.${btnClass}`);
 
-  btn.innerHTML = type === "render" ? spinnerHTML : spinner.originalHTML;
+  allBtns.forEach((btn) => {
+    //   const originalBtn = btn.innerHTML;
+    if (spinner.hasNotSpan) {
+      spinner.originalHTML = btn.innerHTML;
+      spinner.hasNotSpan = false;
+    }
+
+    btn.innerHTML = type === "render" ? spinnerHTML : spinner.originalHTML;
+  });
 };

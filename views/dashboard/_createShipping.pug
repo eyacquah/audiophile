@@ -1,0 +1,27 @@
+.modal(tabindex='-1' role='dialog' style='padding-right: 16px' aria-modal='true' id="modalDefault")
+    .modal-dialog.modal-dialog-centered(role='document')
+        .modal-content
+            .modal-header
+                ul.nav.nav-tabs.card-header-tabs(role='tablist')
+                    li.nav-item
+                        a.nav-link.active(data-bs-toggle='tab' role='tab' aria-selected='true')
+                            i.ci-add-document.me-2.mt-n1
+                            |   Add A Shipping Method
+                button.closeModal.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body.tab-content.py-4
+                form.createShippingForm
+                    // Floating label: Text input
+                    .form-floating.mb-3
+                        input(type="text", id="title", placeholder="International (USA & Canada)").form-control
+                        label(for="title") Shipping Method Title
+                    .form-floating.mb-3
+                        input(type="text", id="duration", placeholder="4-6 days").form-control
+                        label(for="duration") Duration
+                    .form-floating.mb-3
+                        input(type="number", id="fee", placeholder="150").form-control
+                        label(for="fee") Handling / Delivery Fee
+                    // Floating label: Textarea
+                    .form-floating.mb-3
+                        input(id="description", placeholder="All cities in the USA and Canada").form-control
+                        label(for="description") Short Description Description
+                    button.btn.btn-primary(type="submit") Submit

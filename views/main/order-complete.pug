@@ -1,0 +1,24 @@
+extends base
+
+block content
+
+  include _quickview
+  include _nav
+
+
+  .orderConfirmed.container.pb-5.mb-sm-4
+    .pt-5
+      .card.py-3.mt-sm-3
+        .card-body.text-center
+          h2.h4.pb-3 Thank you for your order!
+          p.fs-sm.mb-2 Your order has been placed and will be processed as soon as possible.
+          p.fs-sm.mb-2
+            | Make sure you make note of your order number, which is has been sent to your 
+            span.fw-medium Billing Email Address.
+          p.fs-sm
+            | You will also be receiving an email shortly with confirmation of your order. 
+            u You can now:
+          a.btn.btn-secondary.mt-3.me-3(href='/') Go back shopping
+          a.btn.btn-primary.mt-3(href='#')
+            i.ci-location
+            | &nbsp;Track order

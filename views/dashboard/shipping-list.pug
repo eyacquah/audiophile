@@ -1,0 +1,39 @@
+extends base
+
+block content
+    .container.mb-5.pb-3
+        .bg-light.shadow-lg.rounded-3.overflow-hidden
+            .row
+                include _sidebar
+                // Content
+                section.col-lg-8.pt-lg-4.pb-4.mb-3
+                    // Launch default modal
+                    button(type="button" data-bs-toggle="modal", data-bs-target="#modalDefault").btn.btn-primary.btn-shadow
+                        | Add Shipping Method
+                    include _createShipping
+                    // Basic table
+                    .table-responsive
+                        table.table
+                            thead
+                                tr
+                                    th Title
+                                    th Fee
+                                    th Duration
+                                    th Edit
+                                    th Delete
+                            tbody
+                                each method in shippingMethods
+                                    tr
+                                        td= method.title
+                                        td= `GHS ${method.fee}`
+                                        td= method.duration
+                                        td
+                                            button.editShipping(type="button" data-shipping=method data-bs-toggle="modal", data-bs-target="#modalDefault2").btn.btn-secondary.btn-icon
+                                                i.ci-edit
+                                        td
+                                            button.deleteShipping(type="button" data-shipping=method data-bs-toggle="modal", data-bs-target="#delete").btn.btn-danger.btn-icon
+                                                i.ci-trash
+                                                
+                include _deleteShipping
+                include _editShipping
+                

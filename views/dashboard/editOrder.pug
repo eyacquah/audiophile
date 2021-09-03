@@ -1,0 +1,94 @@
+extends base
+
+block content
+    .container.mb-5.pb-3
+        .bg-light.shadow-lg.rounded-3.overflow-hidden
+            .row
+                include _sidebar
+                // Content
+                section.insertAlert.col-lg-8.pt-lg-4.pb-4.mb-3
+
+                    h3= `Order ${order.orderNum}`
+                    p= `by ${order.customer.name}`
+
+                    h5 Products
+                    .table-responsive
+                        table.table
+                            thead
+                                tr
+                                    th Title
+                                    th Colour
+                                    th Qty
+                                    th Price
+                                    
+                            tbody
+                                each product in order.products
+                                    tr
+                                        td= product.type.title
+                                        td= product.colour || '---'
+                                        td= product.orderQuantity
+                                        td= product.price
+
+                    br
+                    
+                    h5 Details
+
+                    ul.list-group.list-group-flush
+                        li.list-group-item
+                            | Date : #{order.date}
+                        li.list-group-item
+                            | Subtotal : GHS #{order.subtotal}
+                        li.list-group-item
+                            | Delivery Fee : GHS #{order.shippingMethod.fee}
+                        li.list-group-item
+                            | Total : GHS #{order.total}
+                        li.list-group-item
+                            | Delivery Location/Method : #{order.shippingMethod.title}
+                        li.list-group-item
+                            | Paid : #{order.paid}
+                        li.list-group-item
+                            | Payment Method : #{order.paymentMethod}
+                        li.list-group-item
+                            | Delivered : #{order.delivered}
+
+                    // Payment
+                    br
+                    h6 Update Delivery & Payment Info
+                    form.updateOrder(data-id=order.id)
+                        .mb-3
+                            .form-check.form-check-inline
+                                - if(order.paid)
+                                    input(type="checkbox", id="payment", checked).form-check-input
+                                - if(!order.paid)
+                                    input(type="checkbox", id="payment").form-check-input
+                                label.form-check-label(for="payment") Paid
+
+                            // Delivery
+                            .form-check.form-check-inline
+                                - if(order.delivered)
+                                    input(type="checkbox", id="delivery", checked).form-check-input
+                                - if(!order.delivered)
+                                    input(type="checkbox", id="delivery").form-check-input
+                                label.form-check-label(for="delivery") Delivered
+                    
+                    br
+                    h5 Shipping Address
+                    p= order.shippingAddress.name
+                    p= order.shippingAddress.phoneNumber
+                    p= order.shippingAddress.email
+                    p= order.shippingAddress.streetAddress
+                    p= order.shippingAddress.city || ''
+                    p= order.shippingAddress.region
+                    p= order.shippingAddress.country
+
+                    br
+                    h5 Customer
+                    p= order.customer.name
+                    p= order.customer.phoneNumber
+                    p= order.customer.email
+                    p= order.customer.streetAddress
+                    p= order.customer.region
+                    p= order.customer.country
+
+                    // Block outline button
+                    button.updateOrderBtn(type="button").btn.btn-outline-primary.d-block.w-100 Save Changes

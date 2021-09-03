@@ -1,0 +1,35 @@
+extends base
+
+block content
+    .container.mb-5.pb-3
+        .bg-light.shadow-lg.rounded-3.overflow-hidden
+            .row
+                include _sidebar
+                // Content
+                section.col-lg-8.pt-lg-4.pb-4.mb-3
+                    // Launch default modal
+                    button(type="button" data-bs-toggle="modal", data-bs-target="#modalDefault").btn.btn-primary.btn-shadow
+                        | Add Brand
+                    include _createBrand
+                    // Basic table
+                    .table-responsive
+                        table.table
+                            thead
+                                tr
+                                    th Title
+                                    th Edit
+                                    th Delete
+                            tbody
+                                each brand in brands
+                                    tr
+                                        td= brand.title
+                                        td
+                                            button.editBrand(type="button" data-brand=brand data-bs-toggle="modal", data-bs-target="#modalDefault2").btn.btn-secondary.btn-icon
+                                                i.ci-edit
+                                        td
+                                            button.deleteBrand(type="button" data-brand=brand data-bs-toggle="modal", data-bs-target="#delete").btn.btn-danger.btn-icon
+                                                i.ci-trash
+                                                
+                include _deleteBrand
+                include _editBrand
+                

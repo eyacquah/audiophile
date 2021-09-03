@@ -1,3 +1,217 @@
-h1 Home Page! 
+extends base
 
-h5 Go to /admin to have fun
+block content
+
+    include _quickview
+
+    include _nav
+
+    // Hero slider
+    section.tns-carousel.tns-controls-lg
+        .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "responsive": {"0":{"nav":true, "controls": false},"992":{"nav":false, "controls": true}}}')
+            // Item
+            .px-lg-5(style='background-color: #c7622b;')
+                .d-lg-flex.justify-content-between.align-items-center.ps-lg-4
+                    img.d-block.order-lg-2.me-lg-n5.flex-shrink-0(src='/assets/theme/img/home/hero-slider/03.jpg' alt='Men Accessories')
+                    .position-relative.mx-auto.me-lg-n5.py-5.px-4.mb-lg-5.order-lg-1(style='max-width: 42rem; z-index: 10;')
+                        .pb-lg-5.mb-lg-5.text-center.text-lg-start.text-lg-nowrap
+                            h3.h2.text-light.fw-light.pb-1.from-top New In
+                            h2.text-light.display-5.from-top.delay-1  Headphones 
+                            p.fs-lg.text-light.pb-3.from-top.delay-2 From Bose, Sony, Beats & much more...
+                            .d-table.scale-up.delay-4.mx-auto.mx-lg-0
+                                a.btn.btn-outline-light(style='background: black; border-radius: 40px;' href='/collections/headphones')
+                                    | Shop    
+                                    i.ci-arrow-right.ms-2.me-n1
+            // Item
+            .px-lg-5(style='background-color: #c7622b;')
+                .d-lg-flex.justify-content-between.align-items-center.ps-lg-4
+                    img.d-block.order-lg-2.me-lg-n5.flex-shrink-0(src='/assets/theme/img/home/hero-slider/07.jpg' alt='Women Sportswear')
+                    .position-relative.mx-auto.me-lg-n5.py-5.px-4.mb-lg-5.order-lg-1(style='max-width: 42rem; z-index: 10;')
+                        .pb-lg-5.mb-lg-5.text-center.text-lg-start.text-lg-nowrap
+                            //- h3.h2.text-light.fw-light.pb-1.from-bottom Hurry up! Limited time offer.
+                            h2.text-light.display-5.from-bottom.delay-1 TWS Headphones
+                            p.fs-lg.text-light.pb-3.from-bottom.delay-2 From all your favourites Brands
+                            .d-table.scale-up.delay-4.mx-auto.mx-lg-0
+                                a.btn.btn-outline-light(style='background: black; border-radius: 40px;' href='/collections/tws-headphones')
+                                    | Shop    
+                                    i.ci-arrow-right.ms-2.me-n1
+            // Item
+            //
+                <div class="px-lg-5" style="background-color: #2bafb9;">
+                <div class="d-lg-flex justify-content-between align-items-center ps-lg-4"><img class="d-block order-lg-2 me-lg-n5 flex-shrink-0" src="img/home/hero-slider/09.jpg" alt="Summer Collection">
+                <div class="position-relative mx-auto me-lg-n5 py-5 px-4 mb-lg-5 order-lg-1" style="max-width: 42rem; z-index: 10;">
+                <div class="pb-lg-5 mb-lg-5 text-center text-lg-start text-lg-nowrap">
+                <h3 class="h2 text-light fw-light pb-1 from-start">New In!</h3>
+                <h1 class="text-light display-5 from-start delay-1">JBL Collection</h1>
+                <p class="fs-lg text-light pb-3 from-start delay-2">Sound Tailored Just For You!</p>
+                <div class="d-table scale-up delay-4 mx-auto mx-lg-0"><a class="btn btn-outline-light" style="background: black; border-radius: 40px;" href="shop-grid-ls.html">Shop &nbsp; &nbsp; <i class="ci-arrow-right ms-2 me-n1"></i></a></div>
+                </div>
+                </div>
+                </div>
+                </div>
+    main
+    div
+    // Products grid (Trending products)
+    // <section class="container pt-5">
+
+    section.container.pt-md-3.pb-5.mb-md-3
+        // Heading
+        .d-flex.flex-wrap.justify-content-between.align-items-center.pt-1.border-bottom.pb-4.mb-4
+            h1.h1.display-1.text-center Trending 
+        // Grid
+        // Multiple items + Static controls outside + No dots + Loop (Responsive)
+        .tns-carousel.tns-controls-static.tns-controls-outside
+            .tns-carousel-inner(data-carousel-options='{"items": 3, "nav": false, "responsive": {"0":{"items":1},"500":{"items":2, "gutter": 18},"768":{"items":3, "gutter": 20}, "1100":{"gutter": 24}}}')
+                each product in trending
+                    // Product
+                    .card.product-card
+                        -if(product.priceDiscount)
+                            span.badge.bg-danger.badge-shadow Sale
+                        .product-card-actions.d-flex.align-items-center
+                            //- button.btn-wishlist.btn-sm(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist')
+                            //-     i.ci-heart
+                        a.card-img-top.d-block.overflow-hidden(href=`/products/${product.slug}`)
+                            img(src=product.images[0] alt=product.title)
+                        .card-body.py-2
+                            //- a.product-meta.d-block.fs-xs.pb-1(href='#') Computers
+                            h3.product-title.fs-sm
+                                a(href=`/products/${product.slug}`)= product.title
+                            .d-flex.justify-content-between
+                                .product-price
+                                    span.text-accent
+                                        | GHS #{product.priceDiscount || product.price}.
+                                        small 00
+                                    -if(product.priceDiscount)
+                                        del.fs-sm.text-muted
+                                            | GHS #{product.price}.
+                                            small 00
+                                
+                        .card-body.card-body-hidden
+                            button.addToCart.btn.btn-primary.btn-sm.d-block.w-100.mb-2(type='button')
+                                i.ci-cart.fs-sm.me-1
+                                | Add to Cart
+                            .text-center
+                                //- a.nav-link-style.fs-ms(href='#quick-view-electro' data-bs-toggle='modal')
+                                //-     i.ci-eye.align-middle.me-1
+                                //-     | Quick view
+
+   
+    section
+        section.bg-light.py-4.pt-5
+            .container.pt-5
+                .row
+                    // Slider
+                    .col-xl-9.pt-xl-4.order-xl-2
+                        .tns-carousel
+                            .tns-carousel-inner(data-carousel-options='{"items": 1, "controls": false, "loop": false}')
+                                div
+                                    .row.align-items-center
+                                        .col-md-6.order-md-2
+                                            img.d-block.mx-auto(src='/assets/theme/img/home/hero-slider/04.jpg' alt='Headphones')
+                                        .col-lg-5.col-md-6.offset-lg-1.order-md-1.pt-4.pb-md-4.text-center.text-md-start
+                                            h2.fw-light.pb-1.from-bottom World of music with
+                                            h1.display-4.from-bottom.delay-1 Headphones
+                                            h5.fw-light.pb-3.from-bottom.delay-2 Choose between top brands
+                                            .d-table.scale-up.delay-4.mx-auto.mx-md-0
+                                                a.btn.btn-black.btn-outline-light.btn-shadow(href='/collections/headphones')
+                                                    | Shop Now
+                                                    i.ci-arrow-right.ms-2.me-n1
+                                div
+                                    .row.align-items-center
+                                        .col-md-6.order-md-2
+                                            img.d-block.mx-auto(src='/assets/theme/img/home/hero-slider/05.jpg' alt='Speaker Collection')
+                                        .col-lg-5.col-md-6.offset-lg-1.order-md-1.pt-4.pb-md-4.text-center.text-md-start
+                                            h2.fw-light.pb-1.from-start Explore the best
+                                            h1.display-4.from-start.delay-1 Speaker Collection
+                                            h5.fw-light.pb-3.from-start.delay-2 on the market
+                                            .d-table.scale-up.delay-4.mx-auto.mx-md-0
+                                                a.btn.btn-black.btn-outline-light.btn-shadow(href='/collections/speakers')
+                                                    | Shop Now
+                                                    i.ci-arrow-right.ms-2.me-n1
+                                div
+                                    .row.align-items-center
+                                        .col-md-6.order-md-2
+                                            img.d-block.mx-auto(src='/assets/theme/img/home/hero-slider/06.jpg' alt='TWS & Accessories Collection')
+                                        .col-lg-5.col-md-6.offset-lg-1.order-md-1.pt-4.pb-md-4.text-center.text-md-start
+                                            h2.fw-light.pb-1.scale-up Check our huge
+                                            h1.display-4.scale-up.delay-1 TWS
+                                            h5.fw-light.pb-3.scale-up.delay-2 & Accessories collection
+                                            .d-table.scale-up.delay-4.mx-auto.mx-md-0
+                                                a.btn.btn-black.btn-outline-light.btn-shadow(href='/collections/accessories')
+                                                    | Shop Now
+                                                    i.ci-arrow-right.ms-2.me-n1
+        section.container.pt-5
+        section.container.pt-5
+        section.container.pt-5
+        .container
+            .row
+                .col-xs-6
+                    img(src='/assets/theme/img/shop/departments/07.jpg' alt='Card image top')
+                    img(src='/assets/theme/img/shop/departments/003.jpg' alt='Card image top')
+                    img(src='/assets/theme/img/shop/departments/001.jpg' alt='Card image top')
+        section.container.pt-5
+        section.bg-size-cover.bg-position-center.pt-5.pb-4.pb-lg-5
+            section.container.pt-5
+                .row.g-0
+                    h1.h1.display-2(style='text-align: right;')
+                        strong
+                            em  @audiophilegh 
+        section.container.pt-5
+            // Heading
+            .d-flex.flex-wrap.justify-content-between.align-items-center.pt-1.border-bottom.pb-4.mb-4
+                h1.h1.display-1.text-center Most Popular 
+        // Featured brand (Hoodie)
+        section.container.mb-4.pb-3.pb-sm-0.mb-sm-5(style='color: black;')
+            .row
+                // Banner with controls
+                .col-md-5
+                    .d-flex.flex-column.h-100.overflow-hidden.rounded-3(style='background-color: #000000;')
+                        .d-flex.justify-content-between.px-grid-gutter.py-grid-gutter
+                            div
+                                h3(style='color: #fff;') Best Sellers
+                                .d-table.scale-up.delay-4.mx-auto.mx-lg-0
+                                    a.btn.btn-outline-light(style=' border-radius: 40px;' href='shop-grid-ls.html')
+                                        | Shop 
+                                        i.ci-arrow-right.ms-2.me-n1
+                            #hoodie-day.tns-carousel-controls
+                                button(type='button')
+                                    i.ci-arrow-left
+                                button(type='button')
+                                    i.ci-arrow-right
+                        a.d-none.d-md-block.mt-auto(href='shop-grid-ls.html')
+                            img.d-block.w-100(src='/assets/theme/img/shop/departments/002.jpg' alt='Headphones')
+                // Product grid (carousel)
+                .col-md-7.pt-4.pt-md-0
+                    .tns-carousel
+                        .tns-carousel-inner(data-carousel-options='{"nav": false, "controlsContainer": "#hoodie-day"}')
+                            // Carousel item
+                            each arr in groupArr
+
+                                div
+                                    .row.mx-n2
+                                        each product in arr
+                                            .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                                                .card.product-card.card-static
+                                                    //- button.btn-wishlist.btn-sm(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist')
+                                                    //-     i.ci-heart
+                                                    a.card-img-top.d-block.overflow-hidden(href=`/products/${product.slug}`)
+                                                        img(src=product.images[0] alt=product.title)
+                                                    .card-body.py-2
+                                                        //- a.product-meta.d-block.fs-xs.pb-1(href='#') Headphones
+                                                        h3.product-title.fs-sm
+                                                            a(href=`/products/${product.slug}`)= product.title
+                                                        .d-flex.justify-content-between
+                                                            .product-price
+                                                                span.text-accent
+                                                                    | GHS #{product.priceDiscount || product.price}.
+                                                                    small 00
+                                                                //- -if(product.priceDiscount)
+                                                                //-     del.fs-sm.text-muted
+                                                                //-         | GHS #{product.price}.
+                                                                //-         small 00
+                                                           
+                           
+        section.bg-size-cover.bg-position-center.pt-5.pb-4.pb-lg-5(style='background-color: #fff;')
+            .row.g-0
+        section.bg-size-cover.bg-position-center.pt-5.pb-4.pb-lg-5(style='background-color: #fff;')
+            .row.g-0

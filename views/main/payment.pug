@@ -1,0 +1,172 @@
+extends base
+
+block content
+
+  include _quickview
+  include _nav
+
+
+  // Page Title
+  .page-title-overlap.bg-primary.pt-4
+    .container.d-lg-flex.justify-content-between.py-2.py-lg-3
+      .order-lg-2.mb-3.mb-lg-0.pt-lg-2
+        nav(aria-label='breadcrumb')
+          ol.breadcrumb.breadcrumb-light.flex-lg-nowrap.justify-content-center.justify-content-lg-start
+            li.breadcrumb-item
+              a.text-nowrap(href='/')
+                i.ci-home
+                | Audiophile
+            li.breadcrumb-item.text-nowrap
+              a(href='#') Shop
+            li.breadcrumb-item.text-nowrap.active(aria-current='page') Checkout
+      .order-lg-1.pe-lg-4.text-center.text-lg-start
+        h1.h3.text-black.mb-0 Checkout
+  .container.pb-5.mb-2.mb-md-4
+    .row
+      section.col-lg-8
+        // Steps
+        .steps.steps-light.pt-2.pb-3.mb-5
+          a.step-item.active(href='/cart')
+            .step-progress
+              span.step-count 1
+            .step-label
+              i.ci-cart
+              | Cart
+          a.step-item.active(href='/checkout')
+            .step-progress
+              span.step-count 2
+            .step-label
+              i.ci-user-circle
+              | Details
+          a.step-item.active(href='/shipping')
+            .step-progress
+              span.step-count 3
+            .step-label
+              i.ci-package
+              | Shipping
+          a.step-item.active.current(href='/payment')
+            .step-progress
+              span.step-count 4
+            .step-label
+              i.ci-card
+              | Payment
+          a.step-item(href='#')
+            .step-progress
+              span.step-count 5
+            .step-label
+              i.ci-check-circle
+              | Review
+
+        // Payment methods accordion
+        .insertAlert
+        h2.h6.pb-3.mb-2 Choose payment method
+        .table-responsive
+          table.table.table-hover.fs-sm.border-top
+            thead
+              tr
+                th.align-middle
+                th.align-middle Payment Method
+            tbody
+              // Payment Method
+              tr
+                td
+                  .form-check.mb-4
+                    input.paymentMethod.form-check-input(type='radio' name='payment-method' id='card' value='paystack')
+                    label.form-check-label(for='card')
+                td.align-middle
+                  span.text-dark.fw-medium Card
+                  br
+                  span.text-muted Pay with your VISA or Mastercard
+              
+              tr
+                td
+                  .form-check.mb-4
+                    input.paymentMethod.form-check-input(type='radio' name='payment-method' id='momo' value='paystack' checked)
+                    label.form-check-label(for='momo')
+                td.align-middle
+                  span.text-dark.fw-medium Mobile Money
+                  br
+                  span.text-muted Pay with your MTN, Vodafone or AirtelTigo Account
+
+              tr
+                td
+                  .form-check.mb-4
+                    input.paymentMethod.form-check-input(type='radio' name='payment-method' id='cod' value='cod')
+                    label.form-check-label(for='cod')
+                td.align-middle
+                  span.text-dark.fw-medium Cash on Delivery
+                  br
+                  span.text-muted Pay with cash when your items are delivered                
+       
+
+
+        // Navigation (desktop)
+        .d-none.d-lg-flex.pt-4
+          .w-50.pe-3
+            a.btn.btn-secondary.d-block.w-100(href='/shipping')
+              i.ci-arrow-left.mt-sm-0.me-1
+              span.d-none.d-sm-inline Back to Shipping
+              span.d-inline.d-sm-none Back
+          .w-50.ps-2
+            a.orderSummaryBtn.btn.btn-black.d-block.w-100(href='#')
+              span.d-none.d-sm-inline Review your order
+              span.d-inline.d-sm-none Review order
+              i.ci-arrow-right.mt-sm-0.ms-1
+      // Sidebar
+      aside.col-lg-4.pt-4.pt-lg-0.ps-xl-5
+        .bg-white.rounded-3.shadow-lg.p-4.ms-lg-auto
+          .py-2.px-xl-2
+            .widget.mb-3
+              h2.widget-title.text-center Order summary
+                .productContainer
+                  //- .d-flex.align-items-center.pb-2.border-bottom
+                  //-     a.d-block.flex-shrink-0(href='shop-single-v1.html')
+                  //-     img(src='/assets/theme/img/shop/cart/widget/01.jpg' width='64' alt='Product')
+                  //-     .ps-2
+                  //-     h6.widget-product-title
+                  //-         a(href='shop-single-v1.html') Women Colorblock Sneakers
+                  //-     .widget-product-meta
+                  //-         span.text-accent.me-2
+                  //-         | $150.
+                  //-         small 00
+                  //-         span.text-muted x 1
+
+            ul.list-unstyled.fs-sm.pb-2.border-bottom
+              li.d-flex.justify-content-between.align-items-center
+                span.me-2 Subtotal:
+                span.orderSubtotal.text-end
+                  | GHS 0.
+                  small 00
+              li.d-flex.justify-content-between.align-items-center
+                span.me-2 Shipping:
+                span.shippingFee.text-end &mdash;
+              //- li.d-flex.justify-content-between.align-items-center
+              //-   span.me-2 Taxes:
+              //-   span.text-end
+              //-     | $9.
+              //-     small 50
+              //- li.d-flex.justify-content-between.align-items-center
+              //-   span.me-2 Discount:
+              //-   span.text-end &mdash;
+            h3.orderTotal.fw-normal.text-center.my-4
+              | GHS 0.
+              small 00
+            //- form.needs-validation(novalidate='')
+            //-   .mb-3
+            //-     input.form-control(type='text' placeholder='Promo code' required='')
+            //-     .invalid-feedback Please provide promo code.
+            //-   button.btn.btn-outline-primary.d-block.w-100(type='submit') Apply promo code
+    // Navigation (mobile)
+    .row.d-lg-none
+      .col-lg-8
+        .d-flex.pt-4.mt-3
+          .w-50.pe-3
+            a.btn.btn-secondary.d-block.w-100(href='/shipping')
+              i.ci-arrow-left.mt-sm-0.me-1
+              span.d-none.d-sm-inline Back to Shipping
+              span.d-inline.d-sm-none Back
+          .w-50.ps-2
+            a.orderSummaryBtn.btn.btn-black.d-block.w-100(href='#')
+              span.d-none.d-sm-inline Review your order
+              span.d-inline.d-sm-none Review order
+              i.ci-arrow-right.mt-sm-0.ms-1

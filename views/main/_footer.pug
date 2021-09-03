@@ -1,0 +1,134 @@
+// Footer
+footer.footer.pt-5(style='background-color: #c7622b;')
+    .container
+        .col-md-6.text-center.text-md-start.mb-4
+            .text-nowrap.mb-4
+                a.d-inline-block.align-middle.mt-n1.me-3(href='#')
+                    img.d-block(src='/assets/theme/img/logo-audiophile.png' width='117' alt='Audiophile')
+        .row.pb-2
+            .col-md-4.col-sm-6
+                .widget.widget-links.widget-light.pb-2.mb-4
+                    h3.widget-title.text-light Help 
+                    ul.widget-list
+                        li.widget-list-item
+                            a.widget-list-link(href='#') audiophilegh@yahoo.com
+                        li.widget-list-item
+                            a.widget-list-link(href='#') +233244417314
+                        li.widget-list-item
+                            a.widget-list-link(href='#') FAQs
+            .col-md-4.col-sm-6
+                .widget.widget-links.widget-light.pb-2.mb-4
+                    h3.widget-title.text-light Shop
+                    ul.widget-list
+                        li.widget-list-item
+                            a.widget-list-link(href='#') Headphones
+                        li.widget-list-item
+                            a.widget-list-link(href='#') Speakers
+                        li.widget-list-item
+                            a.widget-list-link(href='#') Accessories
+                        li.widget-list-item
+                            a.widget-list-link(href='#') Bulk Orders
+            .col-md-4.col-sm-6
+                .widget.widget-links.widget-light.pb-2.mb-4
+                    h3.widget-title.text-light About us
+                    ul.widget-list
+                        li.widget-list-item
+                            a.widget-list-link(href='#') About company
+                        li.widget-list-item
+                            a.widget-list-link(href='#') Our team
+                        li.widget-list-item
+                            a.widget-list-link(href='#') Terms & Conditions 
+                        li.widget-list-item
+                            a.widget-list-link(href='#') Privacy Policy
+            .col-md-4.col-sm-6
+                .widget.pb-2.mb-4
+                    h3.widget-title.text-light.pb-1 Join the Audiophile World
+                    .form-text.text-light.opacity-50.pb-1
+                        | Don't want to miss out on early discount offers, updates and new products info?
+                    .subscription-status
+                    form.subscription-form.validate(action='https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=29ca296126' method='post' name='mc-embedded-subscribe-form' target='_blank' novalidate='')
+                        .input-group.flex-nowrap
+                            i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                            input.form-control.rounded-start(type='email' name='EMAIL' placeholder='Your email' required='')
+                            button.btn.btn-black(type='submit' name='subscribe') Subscribe
+                        // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+                        div(style='position: absolute; left: -5000px;' aria-hidden='true')
+                            input.subscription-form-antispam(type='text' name='b_c7103e2c981361a6639545bd5_29ca296126' tabindex='-1')
+                .widget.pb-2.mb-4
+                    .col-md-6.text-center.text-md-end.mb-4
+                        .mb-3
+                            a.btn-social.bs-light.bs-twitter.ms-2.mb-2(href='#')
+                                i.ci-twitter
+                            a.btn-social.bs-light.bs-facebook.ms-2.mb-2(href='#')
+                                i.ci-facebook
+                            a.btn-social.bs-light.bs-instagram.ms-2.mb-2(href='#')
+                                i.ci-instagram
+        // </div>
+        // <div class="pt-5 bg-darker">
+        .container
+            hr.hr-light.mb-5
+            .row.pb-2
+                .col-md-6.text-center.text-md-end.text-md-start.mb-4
+                    .widget.widget-links.widget-light
+                        ul.widget-list.d-flex.flex-wrap.justify-content-center.justify-content-md-start
+                            li.widget-list-item.me-4
+                                a.widget-list-link(href='#') Support
+                            li.widget-list-item.me-4
+                                a.widget-list-link(href='#') Privacy
+                            li.widget-list-item.me-4
+                                a.widget-list-link(href='#') Terms of use
+                .col-md-6.text-center.text-md-end.mb-4
+                    img.d-inline-block(src='/assets/theme/img/cards-alt.png' width='187' alt='Payment methods')
+            .pb-4.fs-xs.text-light.opacity-50.text-center.text-md-start
+                | © 2021 
+                a.text-light(href='#' rel='noopener') Audiophile World.
+// Toolbar for handheld devices (Default)
+.handheld-toolbar
+    .d-table.table-layout-fixed.w-100
+        //- a.d-table-cell.handheld-toolbar-item(href='#')
+        //-     span.handheld-toolbar-icon
+        //-         i.ci-heart
+        //-     span.handheld-toolbar-label Wishlist
+        a.d-table-cell.handheld-toolbar-item(href='javascript:void(0)' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' onclick='window.scrollTo(0, 0)')
+            span.handheld-toolbar-icon
+                i.ci-menu
+            span.handheld-toolbar-label Menu
+        a.d-table-cell.handheld-toolbar-item(href='/cart')
+            span.handheld-toolbar-icon
+                i.ci-cart
+                span.cartQty.badge.bg-primary.rounded-pill.ms-1 0
+            span.cartTotal.handheld-toolbar-label GHS 0.00
+// Back To Top Button
+a.btn-scroll-top(href='#top' data-scroll='')
+    span.btn-scroll-top-tooltip.text-muted.fs-sm.me-2 Top
+    i.btn-scroll-top-icon.ci-arrow-up    
+// Vendor scrits: js libraries and plugins
+script(src='/assets/theme/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')
+script(src='/assets/theme/vendor/simplebar/dist/simplebar.min.js')
+script(src='/assets/theme/vendor/tiny-slider/dist/min/tiny-slider.js')
+script(src='/assets/theme/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')
+script(src='/assets/theme/vendor/drift-zoom/dist/Drift.min.js')
+// Main theme script
+script(src='/assets/theme/js/theme.min.js')
+
+// Axios
+script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
+
+// Medium Style Editor
+script(src='//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js')
+//- script.
+//-     var editor = new MediumEditor('.editable');
+
+// Validator
+script(src="/js/helpers/validator.min.js") 
+
+// Paystack
+script(src='https://js.paystack.co/v1/inline.js')
+
+// Custom Scripts
+script(type="module" src='/js/main/checkout.js')
+script(type="module" src='/js/main/cart.js')
+script(src='/js/main/search.js')
+script(src="/js/main/renderHTML.js")
+
+

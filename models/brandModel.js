@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
 
-const categorySchema = new mongoose.Schema(
+const brandSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, "A category must have a title"],
+      required: [true, "A brand must have a title"],
       unique: true,
       trim: true,
     },
@@ -20,20 +20,19 @@ const categorySchema = new mongoose.Schema(
 
 // Index
 
-// categorySchema.virtual("products", {
-//   ref: "Product",
-//   foreignField: "category",
-//   localField: "_id",
-// });
-
+brandSchema.virtual("products", {
+  ref: "Product",
+  foreignField: "brand",
+  localField: "_id",
+});
 
 ///////////////////////////////////////////////////////////// DOCUMENT MIDDLEWARE
 
-categorySchema.pre("save", function (next) {
+brandSchema.pre("save", function (next) {
   this.slug = slugify(this.title, { lower: true });
   next();
 });
 
-const Category = mongoose.model("Category", categorySchema);
+const Brand = mongoose.model("Brand", brandSchema);
 
-module.exports = Category;
+module.exports = Brand;

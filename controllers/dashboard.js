@@ -1,90 +1,98 @@
-// const { promisify } = require("util");
-// const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
+const jwt = require("jsonwebtoken");
 
 const catchAsync = require("../utils/catchAsync");
 const Product = require("../models/productModel");
-const Category = require("../models/categoryModel");
-// const Order = require("../models/orderModel");
-// const Customer = require("../models/customerModel");
-// const User = require("../models/userModel");
+const Brand = require("../models/brandModel");
+const Collection = require("../models/collectionModel");
+const ShippingMethod = require("../models/shippingModel");
+const Order = require("../models/orderModel");
+const Customer = require("../models/customerModel");
+const User = require("../models/userModel");
 // const Slider = require("../models/sliderModel");
 const APIFeatures = require("../utils/apiFeatures");
 
-// exports.getLoginTemplate = async (req, res, next) => {
-//   // await Order.deleteMany();
-//   // console.log("DELETED");
-//   res.locals.url = "https://sapphire-scent-bucket.s3.us-west-2.amazonaws.com";
-//   try {
-//     const token = req.cookies.jwt;
-//     const decodedToken = await promisify(jwt.verify)(
-//       token,
-//       process.env.JWT_SECRET
-//     );
+exports.renderLoginForm = async (req, res, next) => {
+  try {
+    const token = req.cookies.jwt;
+    const decodedToken = await promisify(jwt.verify)(
+      token,
+      process.env.JWT_SECRET
+    );
 
-//     await User.findById(decodedToken.id);
-//     return next();
-//   } catch (err) {
-//     // console.log(err);
-//     res.status(200).render("dashboard/login", {
-//       title: "Login",
-//     });
-//   }
-// };
+    await User.findById(decodedToken.id);
+    return next();
+  } catch (err) {
+    // console.log(err);
+    res.status(200).render("dashboard/login", {
+      title: "Login",
+    });
+  }
+};
 
-exports.getDashboard = (req, res) => res.status(200).render("dashboard/index");
+exports.getDashboard = catchAsync(async (req, res) => {
+  const orders = await Order.find();
 
-exports.getAllCategories = catchAsync(async (req, res, next) => {
-  const categories = await Category.find();
+  res.status(200).render("dashboard/index", { orders });
+});
 
-  res.status(200).render("dashboard/category-list", {
-    categories,
+exports.getAllBrands = catchAsync(async (req, res, next) => {
+  const brands = await Brand.find();
+
+  res.status(200).render("dashboard/brand-list", {
+    brands,
   });
 });
 
+exports.getAllCollections = catchAsync(async (req, res, next) => {
+  const collections = await Collection.find();
+
+  res.status(200).render("dashboard/collection-list", { collections });
+});
+
 exports.renderProductForm = catchAsync(async (req, res) => {
-  const categories = await Category.find();
-  res.status(200).render("dashboard/add-product", { categories });
+  const brands = await Brand.find();
+  const collections = await Collection.find();
+  res.status(200).render("dashboard/add-product", { brands, collections });
 });
 
 exports.getUpdateProductForm = catchAsync(async (req, res, next) => {
   const product = await Product.findOne({ slug: req.params.slug });
-  const categories = await Category.find();
+  const brands = await Brand.find();
+  const collections = await Collection.find();
 
   res.status(200).render("dashboard/editProduct", {
     product,
-    categories,
+    brands,
+    collections,
   });
 });
 
 exports.getAllProducts = catchAsync(async (req, res, next) => {
-  const { product } = req.query;
-  const results = await Product.find();
-  const features = new APIFeatures(Product.find(), req.query).paginate();
-  const products = await features.query;
-
-  // const products = allProducts.map((item) => {
-  //   item.amountOff = item.priceDiscount
-  //     ? 100 - Math.floor((item.priceDiscount / item.price) * 100)
-  //     : 0;
-
-  //   return item;
-  // });
-
-  const numResults = results.length;
-  const RES_PER_PAGE = 10;
-  const numOfPages = Math.ceil(numResults / RES_PER_PAGE);
-  const currPage = +req.query.page || 1;
-
-  res.locals.currPage = currPage;
-  res.locals.numOfPages = numOfPages;
-  res.locals.pageLimit = RES_PER_PAGE;
-  res.locals.query = product;
-
-  // products.reverse();
+  const products = await Product.find();
 
   res.status(200).render("dashboard/product-list", {
     title: "All Products",
     products,
+  });
+});
+
+exports.getShippingMethods = catchAsync(async (req, res, next) => {
+  const shippingMethods = await ShippingMethod.find();
+
+  res.status(200).render("dashboard/shipping-list", {
+    title: "Shiping Methods",
+    shippingMethods,
+  });
+});
+
+exports.getOrderDetail = catchAsync(async (req, res, next) => {
+  const order = await Order.findById(req.params.orderId);
+  // console.log(order.products);
+
+  res.status(200).render("dashboard/editOrder", {
+    title: "Order Detail",
+    order,
   });
 });
 
@@ -100,40 +108,17 @@ exports.getAllProducts = catchAsync(async (req, res, next) => {
 // exports.getAllOrders = catchAsync(async (req, res, next) => {
 //   const results = await Order.find();
 
-//   const orders = results.map((order) => {
-//     order.payStatus = order.paid ? "Paid" : "Pending";
-//     order.delStatus = order.delivered ? "Delivered" : "Pending";
-//     return order;
-//   });
+//   // const orders = results.map((order) => {
+//   //   order.payStatus = order.paid ? "Paid" : "Pending";
+//   //   order.delStatus = order.delivered ? "Delivered" : "Pending";
+//   //   return order;
+//   // });
 
 //   orders.reverse();
 
 //   res.status(200).render("dashboard/order-list", {
 //     title: "All Orders",
 //     orders,
-//   });
-// });
-
-// exports.getOrderDetail = catchAsync(async (req, res, next) => {
-//   const order = await Order.findById(req.params.orderId);
-
-//   const noteDate = new Date(Date.parse(order.notes[0].createdAt));
-
-//   const noteOptions = {
-//     hour: "2-digit",
-//     minute: "2-digit",
-//     timeZone: "GMT",
-//     timeZoneName: "short",
-//   };
-
-//   order.notes[0].date = noteDate.toLocaleTimeString("en-GB", noteOptions);
-
-//   order.payStatus = order.paid ? "Paid" : "Pending";
-//   order.delStatus = order.delivered ? "Delivered" : "Pending";
-
-//   res.status(200).render("dashboard/order-detail", {
-//     title: "Order Detail",
-//     order,
 //   });
 // });
 
@@ -148,12 +133,12 @@ exports.getAllProducts = catchAsync(async (req, res, next) => {
 //   });
 // });
 
-// exports.confirmDeleteCategory = catchAsync(async (req, res, next) => {
-//   const catArr = await Category.find({ slug: req.params.slug });
-//   const category = catArr[0];
+// exports.confirmDeleteBrand = catchAsync(async (req, res, next) => {
+//   const catArr = await Brand.find({ slug: req.params.slug });
+//   const brand = catArr[0];
 
-//   res.status(200).render("dashboard/delete-category", {
-//     category,
+//   res.status(200).render("dashboard/delete-brand", {
+//     brand,
 //   });
 // });
 

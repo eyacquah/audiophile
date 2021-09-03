@@ -1,4 +1,4 @@
-.modal(tabindex='-1' role='dialog' style='padding-right: 16px' aria-modal='true' id="modalDefault")
+.modal(tabindex='-1' role='dialog' style='padding-right: 16px' aria-modal='true' id="modalDefault2")
     .modal-dialog.modal-dialog-centered(role='document')
         .modal-content
             .modal-header
@@ -6,14 +6,14 @@
                     li.nav-item
                         a.nav-link.active(data-bs-toggle='tab' role='tab' aria-selected='true')
                             i.ci-add-document.me-2.mt-n1
-                            |   Create Category
+                            |   Edit Collection
                 button.closeModal.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
             .modal-body.tab-content.py-4
-                form.createCategoryForm
+                form.editCollectionForm
                     // Floating label: Text input
                     .form-floating.mb-3
                         input(type="text", id="title", placeholder="Headphones").form-control
-                        label(for="title") Category Title
+                        label(for="title") Collection Title
 
                     // Floating label: Textarea
                     .form-floating.mb-3

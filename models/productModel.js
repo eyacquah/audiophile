@@ -30,11 +30,14 @@ const productSchema = new mongoose.Schema(
           "The Discounted price ({VALUE}) must be below the regular price",
       },
     },
+    mainImage: String,
     images: [String],
-    subCategories: [String],
-    category: {
+    collections: [String],
+    colours: [String],
+    stockQuantity: Number,
+    brand: {
       type: mongoose.Schema.ObjectId,
-      ref: "Category",
+      ref: "Brand",
     },
     isVisible: {
       type: Boolean,
@@ -46,6 +49,9 @@ const productSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
+// Indexes
+productSchema.index({ title: "text" });
 
 ///////////////////////////////////////////////////////
 ////// DOCUMENT MIDDLEWARE

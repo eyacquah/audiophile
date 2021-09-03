@@ -1,0 +1,218 @@
+extends base
+
+block content
+
+    include _quickview
+    include _nav
+
+    // Custom page title
+    .page-title-overlap.bg-primary.pt-4
+        .container.d-lg-flex.justify-content-between.py-2.py-lg-3
+            .order-lg-2.mb-3.mb-lg-0.pt-lg-2
+                nav(aria-label='breadcrumb')
+                    ol.breadcrumb.breadcrumb-light.flex-lg-nowrap.justify-content-center.justify-content-lg-start
+                        li.breadcrumb-item
+                            a.text-nowrap(href='/')
+                                i.ci-home
+                                | Audiophile
+                        li.breadcrumb-item.text-nowrap
+                            a(href=`#`) Shop
+                        li.breadcrumb-item.text-nowrap.active(aria-current='page')
+                            | #{product.title}
+            .order-lg-1.pe-lg-4.text-center.text-lg-start
+                h1.h3.text-black.mb-2= product.title
+                //- div
+                //-     .star-rating
+                //-         i.star-rating-icon.ci-star-filled.active
+                //-         i.star-rating-icon.ci-star-filled.active
+                //-         i.star-rating-icon.ci-star-filled.active
+                //-         i.star-rating-icon.ci-star-filled.active
+                //-         i.star-rating-icon.ci-star
+                //-     span.d-inline-block.fs-sm.text-black.opacity-70.align-middle.mt-1.ms-1
+    .container
+        .bg-light.shadow-lg.rounded-3
+            // Tabs
+            ul.nav.nav-tabs(role='tablist')
+                li.nav-item
+                    a.nav-link.py-4.px-sm-4.active(href='#general' data-bs-toggle='tab' role='tab')
+                        | General 
+                        span.d-none.d-sm-inline Info
+            .px-4.pt-lg-3.pb-3.mb-5
+                .tab-content.px-lg-3
+                    // General info tab
+                    #general.tab-pane.fade.show.active(role='tabpanel')
+                        .row
+                            // Product gallery
+                            .col-lg-7.pe-lg-0
+                                .product-gallery
+                                    .product-gallery-preview.order-sm-2
+                                        #first.product-gallery-preview-item.active
+                                            img.image-zoom(src=product.images[0] data-zoom=product.images[0] alt=product.title)
+                                            .image-zoom-pane
+                                        -if(product.images[1])
+                                            #second.product-gallery-preview-item
+                                                img.image-zoom(src=product.images[1] data-zoom=product.images[1] alt=product.title)
+                                                .image-zoom-pane
+                                        -if(product.images[2])
+                                            #third.product-gallery-preview-item
+                                                img.image-zoom(src=product.images[2] data-zoom=product.images[2] alt=product.title)
+                                                .image-zoom-pane
+                                        -if(product.images[3])
+                                            #fourth.product-gallery-preview-item
+                                                img.image-zoom(src=product.images[3] data-zoom=product.images[3] alt=product.title)
+                                                .image-zoom-pane
+                                        -if(product.images[4])
+                                            #fifth.product-gallery-preview-item
+                                                img.image-zoom(src=product.images[4] data-zoom=product.images[4] alt=product.title)
+                                                .image-zoom-pane
+                                        -if(product.images[5])
+                                            #sixth.product-gallery-preview-item
+                                                img.image-zoom(src=product.images[5] data-zoom=product.images[5] alt=product.title)
+                                                .image-zoom-pane
+                                        -if(product.images[6])
+                                            #seventh.product-gallery-preview-item
+                                                img.image-zoom(src=product.images[6] data-zoom=product.images[6] alt=product.title)
+                                                .image-zoom-pane
+                                        
+                                      
+                                    .product-gallery-thumblist.order-sm-1
+                                        a.product-gallery-thumblist-item.active(href='#first')
+                                            img(src=product.images[0] alt='Product thumb')
+                                        -if(product.images[1])
+                                            a.product-gallery-thumblist-item(href='#second')
+                                                img(src=product.images[1] alt='Product thumb')
+                                        -if(product.images[2])
+                                            a.product-gallery-thumblist-item(href='#third')
+                                                img(src=product.images[2] alt='Product thumb')
+                                        -if(product.images[3])
+                                            a.product-gallery-thumblist-item(href='#fourth')
+                                                img(src=product.images[3] alt='Product thumb')
+                                        -if(product.images[4])
+                                            a.product-gallery-thumblist-item(href='#fifth')
+                                                img(src=product.images[4] alt='Product thumb')
+                                        -if(product.images[5])
+                                            a.product-gallery-thumblist-item(href='#sixth')
+                                                img(src=product.images[5] alt='Product thumb')
+                                        -if(product.images[6])
+                                            a.product-gallery-thumblist-item(href='#seventh')
+                                                img(src=product.images[6] alt='Product thumb')
+                                        
+                            // Product details
+                            .col-lg-5.pt-4.pt-lg-0
+                                .product-details.ms-auto.pb-3
+                                    .h3.fw-normal.text-accent.mb-3.me-1
+                                        | GHS #{product.priceDiscount || product.price.toFixed(2)}
+                                        small
+                                    .fs-sm.mb-4
+                                        - if(product.colours && product.colours.length)
+                                            span.text-heading.fw-medium.me-1 Colour:
+                                            span#colorOption.text-muted
+                                    .position-relative.me-n4.mb-3
+                                        - if(product.colours && product.colours.length)
+                                            each colour in product.colours
+                                                .form-check.form-option.form-check-inline.mb-2
+                                                    input.productColour(type='radio' name='color' id=colour data-bs-label='colorOption' value=colour).form-check-input
+                                                    label(for=colour).form-option-label.rounded-circle
+                                                        span(style=`background-color: ${colour};`).form-option-color.rounded-circle
+                                        br
+                                        .product-badge.product-available.mt-n1
+                                            i.ci-security-check
+                                            | Product available
+                                            
+                                    .d-flex.align-items-center.pt-2.pb-4
+                                        select.itemQty.form-select.me-3(style='width: 5rem')
+                                            option(value='1') 1
+                                            option(value='2') 2
+                                            option(value='3') 3
+                                            option(value='4') 4
+                                            option(value='5') 5
+                                        button.addToCart.btn.btn-black.btn-shadow.d-block.w-100(type='button' data-product=product data-brand=brand)
+                                            i.ci-cart.fs-lg.me-2
+                                            | Add to Cart
+                                    .d-flex.mb-4
+                                        //- .w-100.me-3
+                                        //-     button.btn.btn-secondary.d-block.w-100(type='button')
+                                        //-         i.ci-heart.fs-lg.me-2
+                                        //-         span.d-none.d-sm-inline Add to 
+                                        //-         | Wishlist
+                                        //- .w-100
+                                        //-     button.btn.btn-secondary.d-block.w-100(type='button')
+                                        //-         i.ci-compare.fs-lg.me-2
+                                        //-         | Compare
+                                    // Product panels
+                                    #productPanels.accordion.mb-4
+                                        .accordion-item
+                                            h3.accordion-header
+                                                a.accordion-button(href='#shippingOptions' role='button' data-bs-toggle='collapse' aria-expanded='true' aria-controls='shippingOptions')
+                                                    i.ci-delivery.text-muted.lead.align-middle.mt-n1.me-2
+                                                    | Delivery options
+                                            #shippingOptions.accordion-collapse.collapse.show(data-bs-parent='#productPanels')
+                                                .accordion-body.fs-sm
+                                                    each method in shippingMethods
+                                                        .d-flex.justify-content-between.border-bottom.pb-2
+                                                            div
+                                                                .fw-semibold.text-dark
+                                                                    | #{method.title}
+                                                                .fs-sm.text-muted= method.duration
+                                                            div= `GHS ${method.fee}`
+                                        //- FIND IN LOCAL STORE          
+                                        //- .accordion-item
+                                        //-     h3.accordion-header
+                                        //-         a.accordion-button.collapsed(href='#localStore' role='button' data-bs-toggle='collapse' aria-expanded='true' aria-controls='localStore')
+                                        //-             i.ci-location.text-muted.fs-lg.align-middle.mt-n1.me-2
+                                        //-             | Find in local store
+                                        //-     #localStore.accordion-collapse.collapse(data-bs-parent='#productPanels')
+                                        //-         .accordion-body
+                                        //-             select.form-select
+                                        //-                 option(value='') Select your country
+                                        //-                 option(value='Argentina') Argentina
+                                        //-                 option(value='Belgium') Belgium
+                                        //-                 option(value='France') France
+                                        //-                 option(value='Germany') Germany
+                                        //-                 option(value='Spain') Spain
+                                        //-                 option(value='UK') United Kingdom
+                                        //-                 option(value='USA') USA
+                                    // Sharing
+                                    label.form-label.d-inline-block.align-middle.my-2.me-3 Share:
+                                    a.btn-share.btn-twitter.me-2.my-2(href='#')
+                                        i.ci-twitter
+                                        | Twitter
+                                    a.btn-share.btn-instagram.me-2.my-2(href='#')
+                                        i.ci-instagram
+                                        | Instagram
+                                    a.btn-share.btn-facebook.my-2(href='#')
+                                        i.ci-facebook
+                                        | Facebook
+                    
+    // Product description
+    .container.pt-lg-3.pb-4.pb-sm-5
+        .row.justify-content-center
+            .col-lg-8
+                h2.h3.pb-2 Product Details
+                div.productDetail(data-detail=product.description)
+                //- p= product.description
+                    //- | #{product.description}
+    hr.mb-5
+    // Product carousel (You may also like)
+    .container.pt-lg-2.pb-5.mb-md-3
+        h2.h3.text-center.pb-4 You may also like
+        .tns-carousel.tns-controls-static.tns-controls-outside
+            .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": true, "nav": false, "responsive": {"0":{"items":1},"500":{"items":2, "gutter": 18},"768":{"items":3, "gutter": 20}, "1100":{"items":4, "gutter": 30}}}')
+                each prod in relatedProducts
+                    - if(prod.slug !== product.slug)
+                        // Product
+                        div
+                            .card.product-card.card-static
+                                //- button.btn-wishlist.btn-sm(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist')
+                                //-     i.ci-heart
+                                a.card-img-top.d-block.overflow-hidden(href=`/products/${prod.slug}`)
+                                    img(src=prod.images[0] alt=prod.title)
+                                .card-body.py-2
+                                    //- a.product-meta.d-block.fs-xs.pb-1(href=`/${brand.slug}`)= brand.title
+                                    h3.product-title.fs-sm
+                                        a(href=`/products/${prod.slug}`)= prod.title
+                                    .d-flex.justify-content-between
+                                        .product-price
+                                            span.text-accent
+                                                | GHS #{prod.priceDiscount || prod.price}.
+                                                small 00

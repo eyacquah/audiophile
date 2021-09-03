@@ -1,0 +1,78 @@
+doctype html
+head
+    meta(charset='utf-8')
+    title Dashboard
+    // SEO Meta Tags
+    //- meta(name='description' content='Cartzilla - Bootstrap E-commerce Template')
+    //- meta(name='keywords' content='bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean')
+    //- meta(name='author' content='Createx Studio')
+    // Viewport
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    // Favicon and Touch Icons
+    link(rel='shortcut icon' href='/assets/images/logo.png' type='image/png')
+    // Vendor Styles including: Font Icons, Plugins, etc.
+    link(rel='stylesheet' media='screen' href='/assets/theme/vendor/simplebar/dist/simplebar.min.css')
+    link(rel='stylesheet' media='screen' href='/assets/theme/vendor/tiny-slider/dist/tiny-slider.css')
+    // Main Theme Styles + Bootstrap
+    link(rel='stylesheet' media='screen' href='/assets/theme/css/theme.min.css')
+// Body
+// Sign in / sign up modal
+
+body.body
+    // Modal with tabs and forms
+.modall(tabindex="-1", role="dialog" style)
+    .modal-dialog(role="document")
+        .modal-content
+            .modal-header
+                ul(role="tablist").nav.nav-tabs.card-header-tabs
+                    li.nav-item
+                        a(href="#signin", data-bs-toggle="tab", role="tab", aria-selected="true").nav-link.active
+                            i.ci-unlocked.me-2.mt-n1
+                            | Sign in
+                    //- li.nav-item
+                    //-     a(href="#signup", data-bs-toggle="tab", role="tab", aria-selected="false").nav-link
+                    //-         i.ci-user.me-2.mt-n1
+                    //-         | Sign up
+                //- button(type="button", class="btn-close", data-bs-dismiss="modal", aria-label="Close")
+            .modal-body.tab-content.py-4.alert
+                form(autocomplete="off").loginForm.tab-pane.fade.show.active
+                    .mb-3
+                        label(for="email").form-label
+                            | Email address
+                        input(type="email", id="email", placeholder="johndoe@example.com").form-control
+                    .mb-3
+                        label(for="password").form-label
+                            | Password
+                        .password-toggle
+                            input(type="password", id="password").form-control
+                            label.password-toggle-btn
+                                input(type="checkbox").password-toggle-check
+                                span.password-toggle-indicator
+                    .mb-3.d-flex.flex-wrap.justify-content-between
+                        .form-check.mb-2
+                            input(type="checkbox", id="remember").form-check-input
+                            label(for="remember").form-check-label
+                                | Remember me
+                        a(href="#").fs-sm
+                            | Forgot password?
+                    button(type="submit" class="btn btn-primary d-block btn-shadow") Sign in
+               
+
+        //- include _footer
+        // Vendor scrits: js libraries and plugins
+        script(src='/assets/theme/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')
+        script(src='/assets/theme/vendor/simplebar/dist/simplebar.min.js')
+        script(src='/assets/theme/vendor/tiny-slider/dist/min/tiny-slider.js')
+        script(src='/assets/theme/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')
+        // Main theme script
+        script(src='/assets/theme/js/theme.min.js')
+        script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
+        script(type="module" src='/js/dashboard/auth.js')
+        script(type="module" src='/js/dashboard/products.js')
+
+
+
+
+
+
+

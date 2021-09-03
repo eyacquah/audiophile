@@ -10,7 +10,6 @@ block content
                     // Launch default modal
                     a(type="button" href='/dashboard/products/add').btn.btn-primary.btn-shadow
                         | Add Product
-                    include _createCategory
                     // Basic table
                     .table-responsive
                         table.table
@@ -19,23 +18,25 @@ block content
                                     th Title
                                     th Actual Price
                                     th Discount Price
-                                    th View
+                                    th Stock Quantity
                                     th Edit
+                                    th View
                                     th Delete
                             tbody
-                                each product in products
+                                - for(i = products.length - 1; i > -1; i--)
                                     tr
-                                        td= product.title
-                                        td= product.price
-                                        td= product.priceDiscount
+                                        td= products[i].title
+                                        td= products[i].price
+                                        td= products[i].priceDiscount
+                                        td= products[i].stockQuantity || 0
                                         td
-                                            a(href=`/products/${product.slug}` type="button").btn.btn-secondary.btn-icon
-                                                i.ci-eye
-                                        td
-                                            a(href=`/dashboard/products/${product.slug}/edit` type="button").btn.btn-info.btn-icon
+                                            a(href=`/dashboard/products/${products[i].slug}/edit` type="button").btn.btn-info.btn-icon
                                                 i.ci-edit
                                         td
-                                            button.deleteProduct(type="button" data-product=product data-bs-toggle="modal", data-bs-target="#delete").btn.btn-danger.btn-icon
+                                            a(href=`/products/${products[i].slug}` type="button").btn.btn-secondary.btn-icon
+                                                i.ci-eye
+                                        td
+                                            button.deleteProduct(type="button" data-product=products[i] data-bs-toggle="modal", data-bs-target="#delete").btn.btn-danger.btn-icon
                                                 i.ci-trash
                                                 
                 include _deleteProduct

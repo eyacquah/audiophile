@@ -1,186 +1,186 @@
-// Navbar Marketplace
-// Remove "navbar-sticky" class to make navigation bar scrollable with the page.
-header.bg-light.shadow-sm.navbar-sticky
-    .navbar.navbar-expand-lg.navbar-light
-        .container
-            a.navbar-brand.d-none.d-sm-block.flex-shrink-0.me-4.order-lg-1(href='/')
-                img(src='/assets/images/logo-02.png' width='100' alt='Audiophile')
-            // Toolbar
-            .navbar-toolbar.d-flex.align-items-center.order-lg-3
-                button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse')
-                    span.navbar-toggler-icon
-                a.navbar-tool.d-none.d-lg-flex(href='javascript:void(0)' data-bs-toggle='collapse' data-bs-target='#searchBox' role='button' aria-expanded='false' aria-controls='searchBox')
-                    span.navbar-tool-tooltip Search
-                    .navbar-tool-icon-box
-                        i.navbar-tool-icon.ci-search
-                a.navbar-tool.d-none.d-lg-flex(href='#')
-                    span.navbar-tool-tooltip Favorites
-                    .navbar-tool-icon-box
-                        i.navbar-tool-icon.ci-heart
-                include _cart-nav
-                //- .navbar-tool.ms-4
-                //-     a.navbar-tool-icon-box.bg-secondary.dropdown-toggle(href='/cart')
-                //-         span.cartQty.navbar-tool-label 3
-                //-         i.navbar-tool-icon.ci-cart
-                //- .navbar-tool.dropdown.ms-2
-                //-     a.navbar-tool-icon-box.border.dropdown-toggle(href=`/${store.slug}/dashboard`)
-                //-         img(src=`${store.image || '/assets/theme/img/comm_logo_transparent.png'}` width='32' alt=`${store.storeName}`)
-                //-     a.navbar-tool-text.ms-n1(href=`/${store.slug}/dashboard`)
-                //-         small= store.storeName
-                //-         | $1,375.00
-                //-     .dropdown-menu.dropdown-menu-end
-                //-         div(style='min-width: 14rem;')
-                //-             h6.dropdown-header Account
-                //-             a.dropdown-item.d-flex.align-items-center(href='#')
-                //-                 i.ci-settings.opacity-60.me-2
-                //-                 | Settings
-                //-             a.dropdown-item.d-flex.align-items-center(href='#')
-                //-                 i.ci-basket.opacity-60.me-2
-                //-                 | Purchases
-                //-             a.dropdown-item.d-flex.align-items-center(href='#')
-                //-                 i.ci-heart.opacity-60.me-2
-                //-                 | Favorites
-                //-                 span.fs-xs.text-muted.ms-auto 4
-                //-             .dropdown-divider
-                //-             h6.dropdown-header Seller Dashboard
-                //-             a.dropdown-item.d-flex.align-items-center(href='dashboard-sales.html')
-                //-                 i.ci-dollar.opacity-60.me-2
-                //-                 | Sales
-                //-                 span.fs-xs.text-muted.ms-auto $1,375.00
-                //-             a.dropdown-item.d-flex.align-items-center(href='dashboard-products.html')
-                //-                 i.ci-package.opacity-60.me-2
-                //-                 | Products
-                //-                 span.fs-xs.text-muted.ms-auto 5
-                //-             a.dropdown-item.d-flex.align-items-center(href='dashboard-add-new-product.html')
-                //-                 i.ci-cloud-upload.opacity-60.me-2
-                //-                 | Add New Product
-                //-             a.dropdown-item.d-flex.align-items-center(href='dashboard-payouts.html')
-                //-                 i.ci-currency-exchange.opacity-60.me-2
-                //-                 | Payouts
-                //-             .dropdown-divider
-                //-             a.dropdown-item.d-flex.align-items-center(href='account-signin.html')
-                //-                 i.ci-sign-out.opacity-60.me-2
-                //-                 | Sign Out
-            #navbarCollapse.collapse.navbar-collapse.me-auto.order-lg-2
-                // Search
-                .input-group.d-lg-none.my-3
-                    i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
-                    input.form-control.rounded-start(type='text' placeholder='Search marketplace')
-                // Categories dropdown
-                ul.navbar-nav.navbar-mega-nav.pe-lg-2.me-lg-2
-                    li.nav-item.dropdown
-                        a.nav-link.dropdown-toggle.ps-lg-0(href='#' data-bs-toggle='dropdown')
-                            i.ci-menu.align-middle.mt-n1.me-2
-                            | Categories
-                        ul.dropdown-menu.py-1
-                            li.dropdown
-                                a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Photos
-                                ul.dropdown-menu
-                                    li.dropdown-item.product-title.fw-medium
-                                        a(href='#')
-                                            | All Photos
-                                            i.ci-arrow-right.fs-xs.ms-1
-                                    li.dropdown-divider
-                                    li
-                                        a.dropdown-item(href='#') Abstract
-                                    li
-                                        a.dropdown-item(href='#') Animals
-                                    li
-                                        a.dropdown-item(href='#') Architecture
+//- // Navbar Marketplace
+//- // Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+//- header.bg-light.shadow-sm.navbar-sticky
+//-     .navbar.navbar-expand-lg.navbar-light
+//-         .container
+//-             a.navbar-brand.d-none.d-sm-block.flex-shrink-0.me-4.order-lg-1(href='/')
+//-                 img(src='/assets/images/logo-02.png' width='100' alt='Audiophile')
+//-             // Toolbar
+//-             .navbar-toolbar.d-flex.align-items-center.order-lg-3
+//-                 button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse')
+//-                     span.navbar-toggler-icon
+//-                 a.navbar-tool.d-none.d-lg-flex(href='javascript:void(0)' data-bs-toggle='collapse' data-bs-target='#searchBox' role='button' aria-expanded='false' aria-controls='searchBox')
+//-                     span.navbar-tool-tooltip Search
+//-                     .navbar-tool-icon-box
+//-                         i.navbar-tool-icon.ci-search
+//-                 a.navbar-tool.d-none.d-lg-flex(href='#')
+//-                     span.navbar-tool-tooltip Favorites
+//-                     .navbar-tool-icon-box
+//-                         i.navbar-tool-icon.ci-heart
+//-                 include _cart-nav
+//-                 //- .navbar-tool.ms-4
+//-                 //-     a.navbar-tool-icon-box.bg-secondary.dropdown-toggle(href='/cart')
+//-                 //-         span.cartQty.navbar-tool-label 3
+//-                 //-         i.navbar-tool-icon.ci-cart
+//-                 //- .navbar-tool.dropdown.ms-2
+//-                 //-     a.navbar-tool-icon-box.border.dropdown-toggle(href=`/${store.slug}/dashboard`)
+//-                 //-         img(src=`${store.image || '/assets/theme/img/comm_logo_transparent.png'}` width='32' alt=`${store.storeName}`)
+//-                 //-     a.navbar-tool-text.ms-n1(href=`/${store.slug}/dashboard`)
+//-                 //-         small= store.storeName
+//-                 //-         | $1,375.00
+//-                 //-     .dropdown-menu.dropdown-menu-end
+//-                 //-         div(style='min-width: 14rem;')
+//-                 //-             h6.dropdown-header Account
+//-                 //-             a.dropdown-item.d-flex.align-items-center(href='#')
+//-                 //-                 i.ci-settings.opacity-60.me-2
+//-                 //-                 | Settings
+//-                 //-             a.dropdown-item.d-flex.align-items-center(href='#')
+//-                 //-                 i.ci-basket.opacity-60.me-2
+//-                 //-                 | Purchases
+//-                 //-             a.dropdown-item.d-flex.align-items-center(href='#')
+//-                 //-                 i.ci-heart.opacity-60.me-2
+//-                 //-                 | Favorites
+//-                 //-                 span.fs-xs.text-muted.ms-auto 4
+//-                 //-             .dropdown-divider
+//-                 //-             h6.dropdown-header Seller Dashboard
+//-                 //-             a.dropdown-item.d-flex.align-items-center(href='dashboard-sales.html')
+//-                 //-                 i.ci-dollar.opacity-60.me-2
+//-                 //-                 | Sales
+//-                 //-                 span.fs-xs.text-muted.ms-auto $1,375.00
+//-                 //-             a.dropdown-item.d-flex.align-items-center(href='dashboard-products.html')
+//-                 //-                 i.ci-package.opacity-60.me-2
+//-                 //-                 | Products
+//-                 //-                 span.fs-xs.text-muted.ms-auto 5
+//-                 //-             a.dropdown-item.d-flex.align-items-center(href='dashboard-add-new-product.html')
+//-                 //-                 i.ci-cloud-upload.opacity-60.me-2
+//-                 //-                 | Add New Product
+//-                 //-             a.dropdown-item.d-flex.align-items-center(href='dashboard-payouts.html')
+//-                 //-                 i.ci-currency-exchange.opacity-60.me-2
+//-                 //-                 | Payouts
+//-                 //-             .dropdown-divider
+//-                 //-             a.dropdown-item.d-flex.align-items-center(href='account-signin.html')
+//-                 //-                 i.ci-sign-out.opacity-60.me-2
+//-                 //-                 | Sign Out
+//-             #navbarCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+//-                 // Search
+//-                 .input-group.d-lg-none.my-3
+//-                     i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
+//-                     input.form-control.rounded-start(type='text' placeholder='Search marketplace')
+//-                 // Brands dropdown
+//-                 ul.navbar-nav.navbar-mega-nav.pe-lg-2.me-lg-2
+//-                     li.nav-item.dropdown
+//-                         a.nav-link.dropdown-toggle.ps-lg-0(href='#' data-bs-toggle='dropdown')
+//-                             i.ci-menu.align-middle.mt-n1.me-2
+//-                             | Brands
+//-                         ul.dropdown-menu.py-1
+//-                             li.dropdown
+//-                                 a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Photos
+//-                                 ul.dropdown-menu
+//-                                     li.dropdown-item.product-title.fw-medium
+//-                                         a(href='#')
+//-                                             | All Photos
+//-                                             i.ci-arrow-right.fs-xs.ms-1
+//-                                     li.dropdown-divider
+//-                                     li
+//-                                         a.dropdown-item(href='#') Abstract
+//-                                     li
+//-                                         a.dropdown-item(href='#') Animals
+//-                                     li
+//-                                         a.dropdown-item(href='#') Architecture
                              
-                            li.dropdown
-                                a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Graphics
-                                ul.dropdown-menu
-                                    li.dropdown-item.product-title.fw-medium
-                                        a(href='#')
-                                            | All Graphics
-                                            i.ci-arrow-right.fs-xs.ms-1
-                                    li.dropdown-divider
-                                    li
-                                        a.dropdown-item(href='#') Icons
-                                    li
-                                        a.dropdown-item(href='#') Illustartions
+//-                             li.dropdown
+//-                                 a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Graphics
+//-                                 ul.dropdown-menu
+//-                                     li.dropdown-item.product-title.fw-medium
+//-                                         a(href='#')
+//-                                             | All Graphics
+//-                                             i.ci-arrow-right.fs-xs.ms-1
+//-                                     li.dropdown-divider
+//-                                     li
+//-                                         a.dropdown-item(href='#') Icons
+//-                                     li
+//-                                         a.dropdown-item(href='#') Illustartions
                                   
-                            li.dropdown
-                                a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') UI Design
-                                ul.dropdown-menu
-                                    li.dropdown-item.product-title.fw-medium
-                                        a(href='#')
-                                            | All UI Design
-                                            i.ci-arrow-right.fs-xs.ms-1
-                                    li.dropdown-divider
-                                    li
-                                        a.dropdown-item(href='#') PSD Templates
-                                    li
-                                        a.dropdown-item(href='#') Sketch Templates
+//-                             li.dropdown
+//-                                 a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') UI Design
+//-                                 ul.dropdown-menu
+//-                                     li.dropdown-item.product-title.fw-medium
+//-                                         a(href='#')
+//-                                             | All UI Design
+//-                                             i.ci-arrow-right.fs-xs.ms-1
+//-                                     li.dropdown-divider
+//-                                     li
+//-                                         a.dropdown-item(href='#') PSD Templates
+//-                                     li
+//-                                         a.dropdown-item(href='#') Sketch Templates
                                  
-                            li.dropdown
-                                a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Web Themes
-                                ul.dropdown-menu
-                                    li.dropdown-item.product-title.fw-medium
-                                        a(href='#')
-                                            | All Web Themes
-                                            i.ci-arrow-right.fs-xs.ms-1
-                                    li.dropdown-divider
-                                    li
-                                        a.dropdown-item(href='#') WordPress Themes
-                                    li
-                                        a.dropdown-item(href='#') Bootstrap Themes
+//-                             li.dropdown
+//-                                 a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Web Themes
+//-                                 ul.dropdown-menu
+//-                                     li.dropdown-item.product-title.fw-medium
+//-                                         a(href='#')
+//-                                             | All Web Themes
+//-                                             i.ci-arrow-right.fs-xs.ms-1
+//-                                     li.dropdown-divider
+//-                                     li
+//-                                         a.dropdown-item(href='#') WordPress Themes
+//-                                     li
+//-                                         a.dropdown-item(href='#') Bootstrap Themes
                                   
-                            li.dropdown
-                                a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Fonts
-                                ul.dropdown-menu
-                                    li.dropdown-item.product-title.fw-medium
-                                        a(href='#')
-                                            | All Fonts
-                                            i.ci-arrow-right.fs-xs.ms-1
-                                    li.dropdown-divider
-                                    li
-                                        a.dropdown-item(href='#') Blackletter
-                                    li
-                                        a.dropdown-item(href='#') Display
+//-                             li.dropdown
+//-                                 a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Fonts
+//-                                 ul.dropdown-menu
+//-                                     li.dropdown-item.product-title.fw-medium
+//-                                         a(href='#')
+//-                                             | All Fonts
+//-                                             i.ci-arrow-right.fs-xs.ms-1
+//-                                     li.dropdown-divider
+//-                                     li
+//-                                         a.dropdown-item(href='#') Blackletter
+//-                                     li
+//-                                         a.dropdown-item(href='#') Display
                                    
                                    
-                            li.dropdown
-                                a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Add-Ons
-                                ul.dropdown-menu
-                                    li.dropdown-item.product-title.fw-medium
-                                        a(href='#')
-                                            | All Add-Ons
-                                            i.ci-arrow-right.fs-xs.ms-1
-                                    li.dropdown-divider
-                                    li
-                                        a.dropdown-item(href='#') Photoshop Add-Ons
-                                    li
-                                        a.dropdown-item(href='#') Illustrator Add-Ons
+//-                             li.dropdown
+//-                                 a.dropdown-item.dropdown-toggle(href='#' data-bs-toggle='dropdown') Add-Ons
+//-                                 ul.dropdown-menu
+//-                                     li.dropdown-item.product-title.fw-medium
+//-                                         a(href='#')
+//-                                             | All Add-Ons
+//-                                             i.ci-arrow-right.fs-xs.ms-1
+//-                                     li.dropdown-divider
+//-                                     li
+//-                                         a.dropdown-item(href='#') Photoshop Add-Ons
+//-                                     li
+//-                                         a.dropdown-item(href='#') Illustrator Add-Ons
                                  
-    // Search collapse
-    #searchBox.search-box.collapse
-        .card.pt-2.pb-4.border-0.rounded-0
-            .container
-                .input-group
-                    i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
+//-     // Search collapse
+//-     #searchBox.search-box.collapse
+//-         .card.pt-2.pb-4.border-0.rounded-0
+//-             .container
+//-                 .input-group
+//-                     i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
                     input.form-control.rounded-start(type='text' placeholder='Search marketplace')
 // NAV END
 // Dashboard header
-.page-title-overlap.bg-accent.pt-4
+.page-title-overlap.bg-dark.pt-4
     .container.d-flex.flex-wrap.flex-sm-nowrap.justify-content-center.justify-content-sm-between.align-items-center.pt-2
         .d-flex.align-items-center.pb-3
-            .img-thumbnail.rounded-circle.position-relative.flex-shrink-0(style='width: 6.375rem;')
-                img.rounded-circle(src='/assets/images/logo-dark.jpg' alt=`Audiophile`)
+            //- .img-thumbnail.rounded-circle.position-relative.flex-shrink-0(style='width: 6.375rem;')
+            //-     img.rounded-circle(src='/assets/images/logo.png' alt=`Audiophile`)
             .ps-3
-                h3.text-light.fs-lg.mb-0= Audiophile
+                h3.text-light.fs-lg.mb-0 Audiophile World
                 span.d-block.text-light.fs-ms.opacity-60.py-1= `Established in 2018`
-        .d-flex
-            .text-sm-end.me-5
-                .text-light.fs-base Total sales
-                h3.text-light=0
-            .text-sm-end
-                .text-light.fs-base Seller rating
-                .star-rating
-                    i.star-rating-icon.ci-star-filled.active
-                    i.star-rating-icon.ci-star-filled.active
-                    i.star-rating-icon.ci-star-filled.active
-                    i.star-rating-icon.ci-star-filled.active
-                    i.star-rating-icon.ci-star
-                .text-light.opacity-60.fs-xs Based on 98 reviews
+        //- .d-flex
+        //-     .text-sm-end.me-5
+        //-         .text-light.fs-base Total sales
+        //-         h3.text-light=0
+        //-     .text-sm-end
+        //-         .text-light.fs-base Seller rating
+        //-         .star-rating
+        //-             i.star-rating-icon.ci-star-filled.active
+        //-             i.star-rating-icon.ci-star-filled.active
+        //-             i.star-rating-icon.ci-star-filled.active
+        //-             i.star-rating-icon.ci-star-filled.active
+        //-             i.star-rating-icon.ci-star
+        //-         .text-light.opacity-60.fs-xs Based on 98 reviews

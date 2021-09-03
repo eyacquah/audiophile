@@ -1,0 +1,179 @@
+
+      // Page Title
+      .page-title-overlap.bg-primary.pt-4
+        .container.d-lg-flex.justify-content-between.py-2.py-lg-3
+          .order-lg-2.mb-3.mb-lg-0.pt-lg-2
+            nav(aria-label='breadcrumb')
+              ol.breadcrumb.breadcrumb-light.flex-lg-nowrap.justify-content-center.justify-content-lg-start
+                li.breadcrumb-item
+                  a.text-nowrap(href='home-fashion-store-v1.html')
+                    i.ci-home
+                    | Home
+                li.breadcrumb-item.text-nowrap
+                  a(href='shop-grid-ls.html') Shop
+                li.breadcrumb-item.text-nowrap.active(aria-current='page') Checkout
+          .order-lg-1.pe-lg-4.text-center.text-lg-start
+            h1.h3.mb-0 Your cart
+      .container.pb-5.mb-2.mb-md-4
+        .row
+          // List of items
+          section.col-lg-8
+            .d-flex.justify-content-between.align-items-center.pt-3.pb-4.pb-sm-5.mt-1
+              h2.h6.mb-0 Products
+              a.btn.btn-black.btn-outline-light.btn-sm.ps-2(href='shop-grid-ls.html')
+                i.ci-arrow-left.me-2
+                | Continue shopping
+            // Item
+            .d-sm-flex.justify-content-between.align-items-center.my-2.pb-3.border-bottom
+              .d-block.d-sm-flex.align-items-center.text-center.text-sm-start
+                a.d-inline-block.flex-shrink-0.mx-auto.me-sm-4(href='shop-single-v1.html')
+                  img(src='img/shop/cart/01.jpg' width='160' alt='Product')
+                .pt-2
+                  h3.product-title.fs-base.mb-2
+                    a(href='shop-single-v1.html') Women Colorblock Sneakers
+                  .fs-sm
+                    span.text-muted.me-2 Color:
+                    | White & Blue
+                  .fs-lg.text-accent.pt-2
+                    | $154.
+                    small 00
+              .pt-2.pt-sm-0.ps-sm-3.mx-auto.mx-sm-0.text-center.text-sm-start(style='max-width: 9rem;')
+                label.form-label(for='quantity1') Quantity
+                input#quantity1.form-control(type='number' min='1' value='1')
+                button.btn.btn-link.px-0.text-primary(type='button')
+                  i.ci-close-circle.me-2
+                  span.fs-sm Remove
+            // Item
+            .d-sm-flex.justify-content-between.align-items-center.my-2.pb-3.border-bottom
+              .d-block.d-sm-flex.align-items-center.text-center.text-sm-start
+                a.d-inline-block.flex-shrink-0.mx-auto.me-sm-4(href='shop-single-v1.html')
+                  img(src='img/shop/cart/02.jpg' width='160' alt='Product')
+                .pt-2
+                  h3.product-title.fs-base.mb-2
+                    a(href='shop-single-v1.html') TH Jeans City Backpack
+                  .fs-sm
+                    span.text-muted.me-2 Color:
+                    | Khaki
+                  .fs-lg.text-accent.pt-2
+                    | $79.
+                    small 50
+              .pt-2.pt-sm-0.ps-sm-3.mx-auto.mx-sm-0.text-center.text-sm-start(style='max-width: 9rem;')
+                label.form-label(for='quantity2') Quantity
+                input#quantity2.form-control(type='number' min='1' value='1')
+                button.btn.btn-link.px-0.text-primary(type='button')
+                  i.ci-close-circle.me-2
+                  span.fs-sm Remove
+            // Item
+            .d-sm-flex.justify-content-between.align-items-center.my-2.pb-3.border-bottom
+              .d-block.d-sm-flex.align-items-center.text-center.text-sm-start
+                a.d-inline-block.flex-shrink-0.mx-auto.me-sm-4(href='shop-single-v1.html')
+                  img(src='img/shop/cart/03.jpg' width='160' alt='Product')
+                .pt-2
+                  h3.product-title.fs-base.mb-2
+                    a(href='shop-single-v1.html') 3-Color Sun Stash Hat
+                  .fs-sm
+                    span.text-muted.me-2 Color:
+                    | Pink / Beige / Dark blue
+                  .fs-lg.text-accent.pt-2
+                    | $22.
+                    small 50
+              .pt-2.pt-sm-0.ps-sm-3.mx-auto.mx-sm-0.text-center.text-sm-start(style='max-width: 9rem;')
+                label.form-label(for='quantity3') Quantity
+                input#quantity3.form-control(type='number' min='1' value='1')
+                button.btn.btn-link.px-0.text-primary(type='button')
+                  i.ci-close-circle.me-2
+                  span.fs-sm Remove
+            // Item
+            .d-sm-flex.justify-content-between.align-items-center.my-2.pb-3.border-bottom
+              .d-block.d-sm-flex.align-items-center.text-center.text-sm-start
+                a.d-inline-block.flex-shrink-0.mx-auto.me-sm-4(href='shop-single-v1.html')
+                  img(src='img/shop/cart/04.jpg' width='160' alt='Product')
+                .pt-2
+                  h3.product-title.fs-base.mb-2
+                    a(href='shop-single-v1.html') Cotton Polo Regular Fit
+                  .fs-sm
+                    span.text-muted.me-2 Color:
+                    | Light blue
+                  .fs-lg.text-accent.pt-2
+                    | $9.
+                    small 00
+              .pt-2.pt-sm-0.ps-sm-3.mx-auto.mx-sm-0.text-center.text-sm-start(style='max-width: 9rem;')
+                label.form-label(for='quantity4') Quantity
+                input#quantity4.form-control(type='number' min='1' value='1')
+                button.btn.btn-link.px-0.text-primary(type='button')
+                  i.ci-close-circle.me-2
+                  span.fs-sm Remove
+            button.btn.btn-black.btn-outline-light.d-block.w-100.mt-4(type='button')
+              i.ci-loading.fs-base.me-2
+              | Update cart
+          // Sidebar
+          aside.col-lg-4.pt-4.pt-lg-0.ps-xl-5
+            .bg-white.rounded-3.shadow-lg.p-4
+              .py-2.px-xl-2
+                .text-center.mb-4.pb-3.border-bottom
+                  h2.h6.mb-3.pb-1 Subtotal
+                  h3.fw-normal
+                    | $265.
+                    small 00
+                .mb-3.mb-4
+                  label.form-label.mb-3(for='order-comments')
+                    span.badge.fs-xs.me-2(style='background-color: orangered;') Note
+                    span.fw-medium Additional comments
+                  textarea#order-comments.form-control(rows='6')
+                #order-options.accordion
+                  .accordion-item
+                    h3.accordion-header
+                      a.accordion-button(href='#promo-code' role='button' data-bs-toggle='collapse' aria-expanded='true' aria-controls='promo-code') Apply promo code
+                    #promo-code.accordion-collapse.collapse.show(data-bs-parent='#order-options')
+                      form.accordion-body.needs-validation(method='post' novalidate='')
+                        .mb-3
+                          input.form-control(type='text' placeholder='Promo code' required='')
+                          .invalid-feedback Please provide promo code.
+                        button.btn.btn-black.btn-outline-light.d-block.w-100(type='submit') Apply promo code
+                  //
+                    <div class="accordion-item">
+                    <h3 class="accordion-header"><a class="accordion-button collapsed" href="#shipping-estimates" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="shipping-estimates">Shipping estimates</a></h3>
+                    <div class="accordion-collapse collapse" id="shipping-estimates" data-bs-parent="#order-options">
+                    <div class="accordion-body">
+                    <form class="needs-validation" novalidate>
+                    <div class="mb-3">
+                    <select class="form-select" required>
+                    <option value="">Choose your country</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Finland">Finland</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="United States">United States</option>
+                    </select>
+                    <div class="invalid-feedback">Please choose your country!</div>
+                    </div>
+                    <div class="mb-3">
+                    <select class="form-select" required>
+                    <option value="">Choose your city</option>
+                    <option value="Bern">Bern</option>
+                    <option value="Brussels">Brussels</option>
+                    <option value="Canberra">Canberra</option>
+                    <option value="Helsinki">Helsinki</option>
+                    <option value="Mexico City">Mexico City</option>
+                    <option value="Ottawa">Ottawa</option>
+                    <option value="Washington D.C.">Washington D.C.</option>
+                    <option value="Wellington">Wellington</option>
+                    </select>
+                    <div class="invalid-feedback">Please choose your city!</div>
+                    </div>
+                    <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="ZIP / Postal code" required>
+                    <div class="invalid-feedback">Please provide a valid zip!</div>
+                    </div>
+                    <button class="btn btn-outline-primary d-block w-100" type="submit">Calculate shipping</button>
+                    </form>
+                    </div>
+                    </div>
+                    </div>
+                a.btn.btn-black.btn-outline-light.btn-shadow.d-block.w-100.mt-4(href='checkout-details.html')
+                  i.ci-card.fs-lg.me-2
+                  | Proceed to Checkout
+

@@ -1,0 +1,134 @@
+extends base 
+
+block content
+
+    include _quickview
+
+    include _nav
+
+    // Page Title (Shop Alt)
+    // used for shop templates with filters on top
+    .bg-primary.pt-4.pb-5
+        .container.pt-2.pb-3.pt-lg-3.pb-lg-4
+            .d-lg-flex.justify-content-between.pb-3
+                .order-lg-2.mb-3.mb-lg-0.pt-lg-2
+                    nav(aria-label='breadcrumb')
+                        ol.breadcrumb.breadcrumb-light.flex-lg-nowrap.justify-content-center.justify-content-lg-start
+                            li.breadcrumb-item
+                                a.text-nowrap(href='/')
+                                    i.ci-home
+                                    | Home
+                            li.breadcrumb-item.text-nowrap
+                                a(href='#') Shop
+                            li.breadcrumb-item.text-nowrap.active(aria-current='page')= title
+                .order-lg-1.pe-lg-4.text-center.text-lg-start
+                    h1.h3.text-black.mb-0= `Shop ${title}`
+    .container.pb-5.mb-2.mb-md-4
+        // Products grid
+        .row.pt-3.mx-n2
+            each prod in products
+                // Product PANDA
+                .col-lg-3.col-md-4.col-sm-6.px-2.mb-4
+                    .card.product-card
+                        - if(prod.priceDiscount)
+                            span.badge.bg-danger.badge-shadow Sale
+                        //- button.btn-wishlist.btn-sm(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist')
+                        //-     i.ci-heart
+                        a.card-img-top.d-block.overflow-hidden(href=`/products/${prod.slug}`)
+                            img(src=prod.images[prod.images.length - 1] alt=prod.title)
+                        .card-body.py-2
+                            //- a.product-meta.d-block.fs-xs.pb-1(href='#')= collection.title
+                            h3.product-title.fs-sm
+                                a(href=`/products/${prod.slug}`)= prod.title
+                            .d-flex.justify-content-between
+                                .product-price
+                                    span.text-accent
+                                        | GHS #{prod.priceDiscount || prod.price}.
+                                        small 00
+                                    - if(prod.priceDiscount)
+                                        del.fs-sm.text-muted
+                                            | GHS #{prod.price}.
+                                            small 00
+                                //- .star-rating
+                                //-     i.star-rating-icon.ci-star-filled.active
+                                //-     i.star-rating-icon.ci-star-filled.active
+                                //-     i.star-rating-icon.ci-star-filled.active
+                                //-     i.star-rating-icon.ci-star-filled.active
+                                //-     i.star-rating-icon.ci-star-filled.active
+                        .card-body.card-body-hidden
+                            button.addToCart.btn.btn-black.btn-sm.d-block.w-100.mb-2(type='button' data-product=prod)
+                                i.ci-cart.fs-sm.me-1
+                                | Add to Cart
+                            //- .text-center
+                            //-     a.nav-link-style.fs-ms(href='#quick-view' data-bs-toggle='modal')
+                            //-         i.ci-eye.align-middle.me-1
+                            //-         | Quick view
+                    hr.d-sm-none
+        //- // Banners
+        //- .row.py-sm-2
+        //-     .col-md-8.mb-4
+        //-         .d-sm-flex.justify-content-between.align-items-center.bg-secondary.overflow-hidden.rounded-3
+        //-             .py-4.my-2.my-md-0.py-md-5.px-4.ms-md-3.text-center.text-sm-start
+        //-                 h4.fs-lg.fw-light.mb-2 Converse All Star
+        //-                 h3.mb-4 Make Your Day Comfortable
+        //-                 a.btn.btn-black.btn-shadow.btn-sm(href='#') Shop Now
+        //-             img.d-block.ms-auto(src='/assets/theme/img/shop/collectionalog/banner.jpg' alt='Shop Converse')
+        //-     .col-md-4.mb-4
+        //-         .d-flex.flex-column.h-100.bg-size-cover.bg-position-center.rounded-3.py-4(style='background-image: url(/assets/theme/img/blog/banner-bg.jpg);')
+        //-             .py-4.my-2.px-4.text-center
+        //-                 h5.mb-2 Your Add Banner Here
+        //-                 p.fs-sm.text-muted Hurry up to reserve your spot
+        //-                 a.btn.btn-black.btn-shadow.btn-sm(href='#') Contact us
+        // Products grid
+        .row.mx-n2
+            // PRODUCTS IN 2ND ROW HERE
+            
+        hr.my-3
+        // Pagination
+        - if(numOfPages > 1)
+            nav.d-flex.justify-content-between.pt-2(aria-label='Page navigation')
+                ul.pagination
+                    li.page-item
+                        a.page-link(href=`?page=${currPage - 1}&limit=${pageLimit}`)
+                            i.ci-arrow-left.me-2
+                            | Prev
+                ul.pagination
+                    li.page-item.d-sm-none
+                        span.page-link.page-link-static= `${currPage} / ${numOfPages}`
+                    //- li.page-item.d-none.d-sm-block(aria-current='page')
+                    //-     span.page-link
+                    //-         | 1
+                    //-         span.visually-hidden (current)
+                    - if(currPage - 4 > 0)
+                        li.page-item.d-none.d-sm-block
+                            a.page-link(href=`?page=${currPage - 4}&limit=${pageLimit}`)= currPage - 4
+                    - if(currPage - 3 > 0)
+                        li.page-item.d-none.d-sm-block
+                            a.page-link(href=`?page=${currPage - 3}&limit=${pageLimit}`)= currPage - 3
+                    - if(currPage - 2 > 0)
+                        li.page-item.d-none.d-sm-block
+                            a.page-link(href=`?page=${currPage - 2}&limit=${pageLimit}`)= currPage - 2
+                    - if(currPage - 1 > 0)
+                        li.page-item.d-none.d-sm-block
+                            a.page-link(href=`?page=${currPage - 1}&limit=${pageLimit}`)= currPage - 1
+                    li.page-item.d-none.d-sm-block.active
+                        a.page-link(href=`#`)= currPage
+                    - if(currPage + 1 <= numOfPages)
+                        li.page-item.d-none.d-sm-block
+                            a.page-link(href=`?page=${currPage + 1}&limit=${pageLimit}`)= currPage + 1 
+                    - if(currPage + 2 <= numOfPages)
+                        li.page-item.d-none.d-sm-block
+                            a.page-link(href=`?page=${currPage + 2}&limit=${pageLimit}`)= currPage + 2
+                    - if(currPage + 3 <= numOfPages)
+                        li.page-item.d-none.d-sm-block
+                            a.page-link(href=`?page=${currPage + 3}&limit=${pageLimit}`)= currPage + 3
+                    - if(currPage + 4 <= numOfPages)
+                        li.page-item.d-none.d-sm-block
+                            a.page-link(href=`?page=${currPage + 4}&limit=${pageLimit}`)= currPage + 4
+                    
+                ul.pagination
+                    li.page-item
+                        a.page-link(href=`?page=${currPage + 1}&limit=${pageLimit}` aria-label='Next')
+                            | Next
+                            i.ci-arrow-right.ms-2
+

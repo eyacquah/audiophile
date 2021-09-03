@@ -5,13 +5,8 @@ const mainController = require("../controllers/main");
 
 const router = express.Router();
 
+router.get("*", mainController.getAllBrands);
 router.get("/", mainController.renderIndex);
-
-// router.get(
-//   "/create-store",
-//   authController.limitToUsers,
-//   mainController.renderCreateStoreForm
-// );
 
 router.get("/cart", mainController.renderCartPage);
 router.get("/checkout", mainController.renderCheckoutPage);
@@ -20,9 +15,25 @@ router.get("/payment", mainController.renderPaymentPage);
 router.get("/order-summary", mainController.renderOrderSummaryPage);
 router.get("/order/complete", mainController.renderOrderCompletePage);
 
-// router.use(authController.limitToStoreOwners);
+router.get(
+  "/search",
+  mainController.getSearchResults,
+  mainController.renderProducts
+);
 
-router.get("/products/:productSlug", mainController.renderProductDetail);
-// router.get("/:storeSlug", mainController.renderStoreDetail);
+router.get("/products/:product", mainController.renderProductDetail);
+router.get(
+  "/brands/:brand",
+  mainController.getBrandProducts,
+  mainController.renderProducts
+);
+
+router.get(
+  "/collections/:collection",
+  mainController.getCollectionProducts,
+  mainController.renderProducts
+);
+
+// router.get("/orders/:orderID", mainController.getOrderCompletePage);
 
 module.exports = router;

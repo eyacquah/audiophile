@@ -1,7 +1,10 @@
+import { renderSpinner, showAlert } from "../helpers/helpers.js";
+
 const productForm = document.querySelector(".productForm");
 const deleteProductBtns = document.querySelectorAll(".deleteProduct");
 const confirmDeleteBtn = document.querySelector(".confirmDeleteProduct");
 const deleteTextEl = document.querySelector(".deleteText");
+const collectionEls = document.querySelectorAll(".collection");
 
 const createOrUpdateProduct = async (e) => {
   e.preventDefault();
@@ -27,8 +30,20 @@ const createOrUpdateProduct = async (e) => {
   productForm.append("description", form.description.value);
   productForm.append("price", form.price.value);
   productForm.append("priceDiscount", form.priceDiscount.value);
-  productForm.append("category", form.category.selectedOptions[0].dataset.id);
+  productForm.append("stockQuantity", +form.stockQuantity.value);
+
+  productForm.append("brand", form.brand.selectedOptions[0].dataset.id);
   productForm.append("isVisible", visibility);
+
+  const colours = form.colours.value.trim().split(",");
+
+  colours.forEach((colour) => {
+    if (colour) productForm.append("colours", colour);
+  });
+
+  collectionEls.forEach((el) =>
+    el.checked ? productForm.append("collections", el.dataset.id) : ""
+  );
 
   // return;
   const images = document.getElementById("images")?.files;
@@ -47,6 +62,7 @@ const createOrUpdateProduct = async (e) => {
 };
 
 const updateProduct = async (data, id) => {
+  // return console.log(data);
   try {
     renderSpinner("productBtn", "render", "Updating...");
 
@@ -113,40 +129,4 @@ if (deleteProductBtns) {
 
 if (confirmDeleteBtn) {
   confirmDeleteBtn.addEventListener("click", deleteProduct);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////
-///// HELPERS
-function showAlert(type, msg, insertClass) {
-  const html = `
-  <div class="alert alert-${
-    type === "success" ? "success" : "danger"
-  } alert-dismissible fade show" role="alert">
-  <span class="fw-medium">${
-    type === "success" ? "PRO TIP" : type.toUpperCase()
-  } :</span> ${msg}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-  `;
-
-  const pos = document.querySelector(`.${insertClass}`);
-  pos.insertAdjacentHTML("afterbegin", html);
-}
-
-const spinner = {
-  hasNotSpan: true,
-  originalHTML: "",
-};
-
-function renderSpinner(btnClass, type, text) {
-  const spinnerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-  ${text}`;
-  const btn = document.querySelector(`.${btnClass}`);
-  //   const originalBtn = btn.innerHTML;
-  if (spinner.hasNotSpan) {
-    spinner.originalHTML = btn.innerHTML;
-    spinner.hasNotSpan = false;
-  }
-
-  btn.innerHTML = type === "render" ? spinnerHTML : spinner.originalHTML;
 }

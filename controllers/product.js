@@ -62,6 +62,8 @@ exports.resizeProductImages = catchAsync(async (req, res, next) => {
 // UPDATE PRODUCT
 exports.updateProduct = catchAsync(async (req, res, next) => {
   // Handling PATCH, expects only props that should be updated
+  // req.body.body.colours = req.body.colours.split(",");
+  console.log(req.body);
 
   const doc = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -74,3 +76,14 @@ exports.updateProduct = catchAsync(async (req, res, next) => {
     data: doc,
   });
 });
+
+exports.editColours = (req, res, next) => {
+  console.log(req.body);
+  const { colours } = req.body;
+
+  if (!colours.length || colours[0] === "") return next();
+
+  req.body.colours = colours[0].split(",");
+  console.log(req.body.colours);
+  return next();
+};

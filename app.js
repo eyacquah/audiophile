@@ -64,8 +64,12 @@ app.use(compression());
 app.use("/", require("./routes/mainRoutes"));
 app.use("/dashboard", require("./routes/dashboardRoutes"));
 // app.use("/auth", require("./routes/authRoutes"));
-app.use("/api/v1/categories", require("./routes/categoryRoutes"));
+app.use("/api/v1/brands", require("./routes/brandRoutes"));
+app.use("/api/v1/collections", require("./routes/collectionRoutes"));
 app.use("/api/v1/products", require("./routes/productRoutes"));
+app.use("/api/v1/users", require("./routes/userRoutes"));
+app.use("/api/v1/shipping", require("./routes/shippingRoutes"));
+app.use("/api/v1/orders", require("./routes/orderRoutes"));
 
 // Errors
 app.all("*", (req, res, next) => {

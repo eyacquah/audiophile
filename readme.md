@@ -1,4 +1,4 @@
-# Commercio Web Application
+# Audiophile Web Application
 
 A simple e-commerce store builder for growing businesses in Africa
 
