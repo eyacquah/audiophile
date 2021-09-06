@@ -37,13 +37,14 @@ exports.resizeProductImages = catchAsync(async (req, res, next) => {
   if (req.files.length === 0) return next();
 
   // Store the images in the body
-  req.body.images = [];
+  req.body.images = new Array(req.files.length).fill("");
 
   await Promise.all(
     req.files.map(async (file, i) => {
       const filename = `product-${Math.random() * 1000}-${Date.now()}-${
         i + 1
       }.jpeg`;
+      // const filename = file.originalname;
 
       const resizedImage = await sharp(file.buffer)
         .resize(500, 500)
@@ -52,7 +53,9 @@ exports.resizeProductImages = catchAsync(async (req, res, next) => {
         .toBuffer();
 
       const imageUrl = await uploadToGCP({ filename, buffer: resizedImage });
-      req.body.images.push(imageUrl);
+
+      const originalName = +file.originalname.split(".")[0];
+      req.body.images[originalName - 1] = imageUrl;
     })
   );
 
@@ -61,10 +64,6 @@ exports.resizeProductImages = catchAsync(async (req, res, next) => {
 
 // UPDATE PRODUCT
 exports.updateProduct = catchAsync(async (req, res, next) => {
-  // Handling PATCH, expects only props that should be updated
-  // req.body.body.colours = req.body.colours.split(",");
-  console.log(req.body);
-
   const doc = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });

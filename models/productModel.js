@@ -30,7 +30,6 @@ const productSchema = new mongoose.Schema(
           "The Discounted price ({VALUE}) must be below the regular price",
       },
     },
-    mainImage: String,
     images: [String],
     collections: [String],
     colours: [String],

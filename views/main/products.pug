@@ -35,7 +35,7 @@ block content
                         //- button.btn-wishlist.btn-sm(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist')
                         //-     i.ci-heart
                         a.card-img-top.d-block.overflow-hidden(href=`/products/${prod.slug}`)
-                            img(src=prod.images[prod.images.length - 1] alt=prod.title)
+                            img(src=prod.images[0] alt=prod.title)
                         .card-body.py-2
                             //- a.product-meta.d-block.fs-xs.pb-1(href='#')= collection.title
                             h3.product-title.fs-sm
