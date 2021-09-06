@@ -46,56 +46,14 @@ block content
                             .col-lg-7.pe-lg-0
                                 .product-gallery
                                     .product-gallery-preview.order-sm-2
-                                        #first.product-gallery-preview-item.active
-                                            img.image-zoom(src=product.images[0] data-zoom=product.images[0] alt=product.title)
-                                            .image-zoom-pane
-                                        -if(product.images[1])
-                                            #second.product-gallery-preview-item
-                                                img.image-zoom(src=product.images[1] data-zoom=product.images[1] alt=product.title)
+                                        - for(let i = 0; i < product.images.length; i++)
+                                            .product-gallery-preview-item.active(id=imgIds[i])
+                                                img.image-zoom(src=product.images[i] data-zoom=product.images[i] alt=product.title)
                                                 .image-zoom-pane
-                                        -if(product.images[2])
-                                            #third.product-gallery-preview-item
-                                                img.image-zoom(src=product.images[2] data-zoom=product.images[2] alt=product.title)
-                                                .image-zoom-pane
-                                        -if(product.images[3])
-                                            #fourth.product-gallery-preview-item
-                                                img.image-zoom(src=product.images[3] data-zoom=product.images[3] alt=product.title)
-                                                .image-zoom-pane
-                                        -if(product.images[4])
-                                            #fifth.product-gallery-preview-item
-                                                img.image-zoom(src=product.images[4] data-zoom=product.images[4] alt=product.title)
-                                                .image-zoom-pane
-                                        -if(product.images[5])
-                                            #sixth.product-gallery-preview-item
-                                                img.image-zoom(src=product.images[5] data-zoom=product.images[5] alt=product.title)
-                                                .image-zoom-pane
-                                        -if(product.images[6])
-                                            #seventh.product-gallery-preview-item
-                                                img.image-zoom(src=product.images[6] data-zoom=product.images[6] alt=product.title)
-                                                .image-zoom-pane
-                                        
-                                      
                                     .product-gallery-thumblist.order-sm-1
-                                        a.product-gallery-thumblist-item.active(href='#first')
-                                            img(src=product.images[0] alt='Product thumb')
-                                        -if(product.images[1])
-                                            a.product-gallery-thumblist-item(href='#second')
-                                                img(src=product.images[1] alt='Product thumb')
-                                        -if(product.images[2])
-                                            a.product-gallery-thumblist-item(href='#third')
-                                                img(src=product.images[2] alt='Product thumb')
-                                        -if(product.images[3])
-                                            a.product-gallery-thumblist-item(href='#fourth')
-                                                img(src=product.images[3] alt='Product thumb')
-                                        -if(product.images[4])
-                                            a.product-gallery-thumblist-item(href='#fifth')
-                                                img(src=product.images[4] alt='Product thumb')
-                                        -if(product.images[5])
-                                            a.product-gallery-thumblist-item(href='#sixth')
-                                                img(src=product.images[5] alt='Product thumb')
-                                        -if(product.images[6])
-                                            a.product-gallery-thumblist-item(href='#seventh')
-                                                img(src=product.images[6] alt='Product thumb')
+                                        - for(let i = 0; i < product.images.length; i++)
+                                            a.product-gallery-thumblist-item(href=`#${imgIds[i]}`)
+                                                img(src=product.images[i] alt='Product thumb')
                                         
                             // Product details
                             .col-lg-5.pt-4.pt-lg-0

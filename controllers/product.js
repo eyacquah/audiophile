@@ -30,7 +30,7 @@ const multerFilter = (req, file, cb) => {
 // Handle Upload
 const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
 
-exports.uploadProductImages = upload.array("images", 7);
+exports.uploadProductImages = upload.array("images", 20);
 
 // Resizing Uploaded Images
 exports.resizeProductImages = catchAsync(async (req, res, next) => {

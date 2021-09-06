@@ -109,12 +109,35 @@ exports.renderProductDetail = catchAsync(async (req, res, next) => {
   });
 
   const shippingMethods = await ShippingMethod.find();
+  const imgIds = [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+  ];
 
   res.status(200).render("main/product-detail", {
     product,
     title: product.title,
     relatedProducts,
     shippingMethods,
+    imgIds,
   });
 });
 
