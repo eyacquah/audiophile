@@ -12,12 +12,7 @@ dotenv.config({ path: "./config.env" });
 const app = require("./app");
 
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("DB Connection successful. Awaiting Requests."));
 
 const port = process.env.PORT || 3000;

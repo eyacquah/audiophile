@@ -37,6 +37,10 @@ block content
                     a.nav-link.py-4.px-sm-4.active(href='#general' data-bs-toggle='tab' role='tab')
                         | General 
                         span.d-none.d-sm-inline Info
+                li.nav-item
+                    a.nav-link.py-4.px-sm-4(href='#specs' data-bs-toggle='tab' role='tab')
+                        | Tech 
+                        span.d-none.d-sm-inline Specs
             .px-4.pt-lg-3.pb-3.mb-5
                 .tab-content.px-lg-3
                     // General info tab
@@ -73,9 +77,14 @@ block content
                                                     label(for=colour).form-option-label.rounded-circle
                                                         span(style=`background-color: ${colour};`).form-option-color.rounded-circle
                                         br
-                                        .product-badge.product-available.mt-n1
-                                            i.ci-security-check
-                                            | Product available
+                                        -if(product.stockQuantity)
+                                            .product-badge.product-available.mt-n1
+                                                i.ci-security-check
+                                                | Product available
+                                        -if(!product.stockQuantity)
+                                            .product-badge.product-not-available.mt-n1
+                                                i.ci-security-check
+                                                | Out of stock
                                             
                                     .d-flex.align-items-center.pt-2.pb-4
                                         select.itemQty.form-select.me-3(style='width: 5rem')
@@ -84,9 +93,14 @@ block content
                                             option(value='3') 3
                                             option(value='4') 4
                                             option(value='5') 5
-                                        button.addToCart.btn.btn-black.btn-shadow.d-block.w-100(type='button' data-product=product data-brand=brand)
-                                            i.ci-cart.fs-lg.me-2
-                                            | Add to Cart
+                                        -if(!product.stockQuantity)
+                                            button.addToCart.btn.btn-black.btn-shadow.d-block.w-100(type='button' data-product=product data-brand=brand disabled)
+                                                i.ci-cart.fs-lg.me-2
+                                                | Add to Cart
+                                        -if(product.stockQuantity)
+                                            button.addToCart.btn.btn-black.btn-shadow.d-block.w-100(type='button' data-product=product data-brand=brand)
+                                                i.ci-cart.fs-lg.me-2
+                                                | Add to Cart
                                     .d-flex.mb-4
                                         //- .w-100.me-3
                                         //-     button.btn.btn-secondary.d-block.w-100(type='button')
@@ -142,6 +156,14 @@ block content
                                         i.ci-facebook
                                         | Facebook
                     
+                    // Tech specs tab
+                    #specs.tab-pane.fade(role='tabpanel')
+                        .container.pt-lg-3.pb-4.pb-sm-5
+                            .row.justify-content-center
+                                .col-lg-8
+                                    //- h2.h3.pb-2 Product Specs
+                                    div.productSpecs(data-specs=product.specs)
+
     // Product description
     .container.pt-lg-3.pb-4.pb-sm-5
         .row.justify-content-center

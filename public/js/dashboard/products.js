@@ -28,6 +28,7 @@ const createOrUpdateProduct = async (e) => {
 
   productForm.append("title", form.title.value);
   productForm.append("description", form.description.value);
+  productForm.append("specs", form.specs.value);
   productForm.append("price", form.price.value);
   productForm.append("priceDiscount", form.priceDiscount.value);
   productForm.append("stockQuantity", +form.stockQuantity.value);

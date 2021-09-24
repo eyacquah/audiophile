@@ -55,10 +55,17 @@ block content
                                 //-     i.star-rating-icon.ci-star-filled.active
                                 //-     i.star-rating-icon.ci-star-filled.active
                                 //-     i.star-rating-icon.ci-star-filled.active
-                        .card-body.card-body-hidden
-                            button.addToCart.btn.btn-black.btn-sm.d-block.w-100.mb-2(type='button' data-product=prod)
-                                i.ci-cart.fs-sm.me-1
-                                | Add to Cart
+                        -if(!prod.stockQuantity)
+                            .card-body.card-body-hidden
+                                button.addToCart.btn.btn-black.btn-sm.d-block.w-100.mb-2(type='button' data-product=prod disabled)
+                                    i.ci-cart.fs-sm.me-1
+                                    | Out of stock
+
+                        -if(prod.stockQuantity)
+                            .card-body.card-body-hidden
+                                button.addToCart.btn.btn-black.btn-sm.d-block.w-100.mb-2(type='button' data-product=prod)
+                                    i.ci-cart.fs-sm.me-1
+                                    | Add to cart
                             //- .text-center
                             //-     a.nav-link-style.fs-ms(href='#quick-view' data-bs-toggle='modal')
                             //-         i.ci-eye.align-middle.me-1

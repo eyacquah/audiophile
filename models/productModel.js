@@ -14,6 +14,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, "A product must have a description"],
     },
+    specs: String,
     price: {
       type: Number,
       required: [true, "A product must have a price"],
