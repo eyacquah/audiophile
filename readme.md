@@ -1,6 +1,6 @@
 # Audiophile Web Application
 
-A simple e-commerce store builder for growing businesses in Africa
+A simple e-commerce store for Audiphile World.
 
 Built with modern tcehnologies: NodeJS, Express, MongoDB, Mongoose and Friends 😃
 
