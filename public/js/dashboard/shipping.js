@@ -68,8 +68,7 @@ const displayShippingInfo = (e) => {
   );
   deleteTextEl.textContent = `Are you sure you want to delete the ${shipping.title} shipping method?
   This action is irreversible.`;
-
-  confirmDeleteBtn.dataset.id = shipping.id;
+  confirmDeleteBtn.dataset.id = shipping._id;
 };
 
 const deleteShipping = async (e) => {

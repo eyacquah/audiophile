@@ -30,10 +30,10 @@ const sliderForm = document.querySelector(".sliderForm");
 //   await deleteProduct(e.target.dataset.id);
 // }
 
-async function handleBrandForm(e) {
-  e.preventDefault();
-  await createBrand(this);
-}
+// async function handleBrandForm(e) {
+//   e.preventDefault();
+//   await createBrand(this);
+// }
 
 // async function handleDeleteBrand(e) {
 //   e.preventDefault();
@@ -88,8 +88,8 @@ async function handleBrandForm(e) {
 //   );
 // }
 
-if (brandForm) brandForm.addEventListener("submit", handleBrandForm);
-if (deleteBrandBtn) deleteBrandBtn.addEventListener("click", handleDeleteBrand);
+// if (brandForm) brandForm.addEventListener("submit", handleBrandForm);
+// if (deleteBrandBtn) deleteBrandBtn.addEventListener("click", handleDeleteBrand);
 
 // if (loginForm) loginForm.addEventListener("submit", handleLoginForm);
 

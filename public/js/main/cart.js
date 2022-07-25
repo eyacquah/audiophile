@@ -157,7 +157,7 @@ class Cart {
     );
     if (duplicate) {
       duplicate.orderQuantity += +itemQtyEl?.value || 1;
-      console.log("Duplicate Found!", duplicate);
+      // console.log("Duplicate Found!", duplicate);
     }
 
     this._calcTotals();

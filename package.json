@@ -2,14 +2,13 @@
   "name": "audiophile",
   "version": "1.0.0",
   "description": "E-commerce store for sound devices",
-  "main": "app.js",
   "scripts": {
     "start": "node server.js",
     "dev": "cross-env NODE_ENV=development nodemon server",
-    "watch:main": "parcel watch ./public/js/main/index.js --dist-dir ./public/js/main/bundle.js",
-    "build:main": "parcel build ./public/js/main/index.js --dist-dir ./public/js/main/bundle.js",
-    "watch:dashboard": "parcel watch ./public/js/dashboard/index.js --dist-dir ./public/js/dashboard/bundle.js",
-    "build:dashboard": "parcel build ./public/js/dashboard/index.js --dist-dir ./public/js/dashboard/bundle.js"
+    "watch:main": "parcel watch ./public/js/main/index.js --dist-dir ./public/js/main/bundle",
+    "build:main": "parcel build ./public/js/main/index.js --dist-dir ./public/js/main/bundle",
+    "watch:dashboard": "parcel watch ./public/js/dashboard/index.js --dist-dir ./public/js/dashboard/bundle",
+    "build:dashboard": "parcel build ./public/js/dashboard/index.js --dist-dir ./public/js/dashboard/bundle"
   },
   "author": "Apex Studios",
   "license": "ISC",
@@ -54,7 +53,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "parcel": "^2.0.0-nightly.734",
+    "parcel": "^2.6.2",
     "prettier": "^2.2.1"
   },
   "engines": {
